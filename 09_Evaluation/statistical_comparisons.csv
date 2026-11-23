@@ -1,0 +1,1 @@
+STAT,BaselineEvalID,ComparatorEvalID,CohortType,ClusterUnit,ClusterCount,BootstrapReplicates,BootstrapSeed,PrimaryMetricDelta,CI95Low,CI95High,DeLongPValue,McNemarPValue,MultipleCompMethod,AdjustedPValue,ReportPath,Owner,Version,Status,Created,Updated,EvidencePath

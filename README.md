@@ -1,9 +1,9 @@
 # Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images
 
-[![Stage](https://img.shields.io/badge/Current_Stage-S02_Repository_Bootstrap-blue)](./BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#stage-map)
+[![Stage](https://img.shields.io/badge/Current_Stage-S03_PRISMA_Literature-blue)](./BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#stage-map)
 [![STEP-001](https://img.shields.io/badge/STEP--001-DONE_(G01_PASS)-brightgreen)](./01_Project_Management/reviews/G01_assessment_2026-11-23.md)
-[![STEP-002](https://img.shields.io/badge/STEP--002-COMPLETED-brightgreen)](./01_Project_Management/diary/2026-11-23_STEP-002.md)
-[![Gates G02-G17](https://img.shields.io/badge/Gates_G02--G17-NOT_ASSESSED-lightgrey)](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-13)
+[![STEP-002--003](https://img.shields.io/badge/STEP--002--003-DONE_(G02_PASS)-brightgreen)](./01_Project_Management/reviews/G02_assessment_2026-11-23.md)
+[![Gates G03-G17](https://img.shields.io/badge/Gates_G03--G17-NOT_ASSESSED-lightgrey)](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-13)
 
 ## 1. Project Identity (`RF01–RF04`)
 
@@ -66,5 +66,6 @@
 |---|---|---|---|
 | `S01` / `STEP-001` | Confirm the research mandate, team roles, and unresolved-decision register | **COMPLETED** (`2026-11-23`) | `G01 PASS` ([G01 Assessment](./01_Project_Management/reviews/G01_assessment_2026-11-23.md), [DEC0001](./01_Project_Management/decision_log/DEC0001.md)) |
 | `S02` / `STEP-002` | Instantiate repository skeleton, storage-tier controls, and minimal data-tool environment | **COMPLETED** (`2026-11-23`) | Feeds `G02` ([Verification Report](./environment/data/verification.md), [DEC0014](./01_Project_Management/decision_log/DEC0014.md)) |
-| `S02` / `STEP-003` | Install blank templates (`T01–T35`), canonical CSV registries, and validation checks | **NEXT STEP** (`NOT STARTED`) | Target: `G02` |
-| `S03–S16` / `STEP-004–050` | PRISMA literature through Q1 submission, archival, and conditional web demo | `NOT STARTED` | `G03–G17` (`NOT ASSESSED`) |
+| `S02` / `STEP-003` | Install blank templates (`T01–T35`), canonical CSV registries, and validation checks | **COMPLETED** (`2026-11-23`) | `G02 PASS` ([G02 Assessment](./01_Project_Management/reviews/G02_assessment_2026-11-23.md), [Dashboard](./01_Project_Management/dashboard.md)) |
+| `S03` / `STEP-004` | Approve PRISMA-style systematic literature search and screening protocol | **NEXT STEP** (`NOT STARTED`) | Feeds `G03` |
+| `S03–S16` / `STEP-005–050` | PRISMA search execution through Q1 submission, archival, and conditional web demo | `NOT STARTED` | `G03–G17` (`NOT ASSESSED`) |

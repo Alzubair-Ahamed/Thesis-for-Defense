@@ -2,6 +2,14 @@
 
 All notable governance, repository, and scientific execution milestones for **Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images** are documented in this file.
 
+## [v1.0.0-step003] — 2026-11-23 (`STEP-003` / `G02 PASS`)
+### Added
+- Materialized all 35 blank canonical operational templates (`T01–T35`) in `14_Templates_Prompts/` (`T01_readme.md` through `T35_demo_runbook.md`, including `T15_config.yaml`).
+- Initialized all 24 canonical CSV registries matching [OS Appendix B](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#appendix-b) and [Appendix A.4](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#appendix-a) verbatim (`01_Project_Management/{decisions,risk_register,gates}.csv` populated with real governance records; all 21 scientific registries initialized strictly header-only with zero dummy rows).
+- Created `01_Project_Management/dashboard.md` and `01_Project_Management/timeline.md`.
+- Implemented `13_Automation/validate_registries.py` and `tests/test_registries.py` verifying all 24 CSV schemas, 35 templates, primary-key uniqueness, header-only scientific initialization, and foreign-key integrity (`7/7 pytest checks PASSED`).
+- Completed and passed quality gate `G02` (`01_Project_Management/reviews/G02_assessment_2026-11-23.md`, `GATE0002 = PASS`).
+
 ## [v1.0.0-step002] — 2026-11-23 (`STEP-002`)
 ### Added
 - Materialized the complete 20-folder canonical repository architecture defined in [OS §2](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-02) with `T01`-compliant `README.md` contracts in every domain directory.

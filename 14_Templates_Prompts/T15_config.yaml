@@ -1,0 +1,58 @@
+# ============================================================================
+# TemplateID: T15 (T15_config.yaml)
+# template_version: v1.0.0
+# purpose: Executable machine-readable experiment and XAI configuration / 07_Experiments/EXP####/config.yaml
+# governing_section: §5.2, §14.2-14.3
+# status: BLANK_TEMPLATE (Planning skeleton only; null executable values prohibit launch)
+# ============================================================================
+
+experiment_id: null
+research_question_id: null
+purpose: null                  # baseline | arch_benchmark | ablation | multi_seed | diagnostic_smoke
+parent_comparison_id: null
+approval_record: null          # DEC####
+source_commit: null
+data:
+  release_id: null             # REL####
+  dataset_id: null             # DS####
+  label_release_id: null       # LBL####
+  split_id: null               # SPLIT####
+  preprocessing_id: null       # PP####
+  release_manifest_sha256: null
+  label_map_sha256: null       # 0=Benign, 1=Malignant
+  allowed_partitions: ["train", "val"]   # test & external strictly forbidden in training configs
+model:
+  candidate_id: null           # MC####
+  framework_and_version: null
+  architecture: null           # Resolved under UD13
+  pretrained_weights_tag: null
+  pretrained_weights_sha256: null
+  weight_license_record: null
+  input_resolution: null
+  transfer_learning_schedule:
+    stage1_frozen_epochs: null
+    stage2_unfrozen_layers: null
+    stage2_unfrozen_epochs: null
+training:
+  seed: null
+  deterministic_mode: null
+  batch_size: null
+  optimizer: null
+  lr_stage1: null
+  lr_stage2: null
+  scheduler: null
+  weight_decay: null
+  loss_and_imbalance_policy: null
+  precision_mode: null
+  early_stopping_patience: null
+  val_selection_metric: null
+  training_only_augmentations: null
+xai_linkage:
+  xai_protocol_id: null        # XAIP####
+  gradcam_target_layer: null
+runtime:
+  environment_lock_sha256: null  # environment/model/
+  hardware_record: null
+evaluation_protocol_sha256: null
+checkpoint_policy: null
+artifact_destination: null

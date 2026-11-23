@@ -1,0 +1,1 @@
+DEPLOY,Platform,Tier,URL,AccessMode,SourceCommit,ImageDigest,ModelID,ExportHash,PreprocessingID,XAIProtocolID,LabelMapHash,DataPolicyRecord,ParityCheckPath,SmokeCheckPath,DeployedAt,TakenDownAt,Supersedes,Owner,Version,Status,Created,Updated,EvidencePath

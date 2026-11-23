@@ -1,0 +1,1 @@
+XAIA,EvaluationID,ModelID,XAIProtocolID,LabelReleaseID,CohortType,MethodsAudited,FaithfulnessPath,SanityCheckOutcome,SanityPath,LocalizationMaskCount,LocalizationPath,StabilityPath,QualitativeReviewStatus,QualitativePath,ReportPath,Deviations,Owner,Version,Status,Created,Updated,EvidencePath
