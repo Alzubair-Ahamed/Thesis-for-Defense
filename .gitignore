@@ -1,0 +1,82 @@
+# ============================================================================
+# BC-XAI Research Operating System — Canonical .gitignore (STEP-002 / OS §10.2)
+# Protects Tier-2 Restricted Medical Data, Tier-3 Binary Artifacts, Secrets,
+# and Local Structural Reference Templates from entering Git history.
+# ============================================================================
+
+# 0. Local-only reference files in workspace (never pushed to thesis remote)
+OPG_RESEARCH_OPERATING_SYSTEM.md
+OPG_PROJECT_EXECUTION_BLUEPRINT.md
+Title_defence_evaluation_report.pdf
+
+# 1. Tier-2 Restricted Medical Data & Patient Linkage (NEVER COMMIT)
+03_Datasets/raw/
+03_Datasets/manifests/*_private_linkage*
+03_Datasets/splits/*/private_*
+04_Labels_XAI_Governance/native/
+04_Labels_XAI_Governance/exports/
+04_Labels_XAI_Governance/restricted_masks/
+05_Preprocessing/processed/
+05_Preprocessing/fitted_states/*.pkl
+05_Preprocessing/fitted_states/*.npz
+05_Preprocessing/fitted_states/*.pt
+*.dcm
+*.dicom
+*.pgm
+*.nii
+*.nii.gz
+
+# 2. Tier-3 Model Checkpoints, Weights & Raw Attribution Dumps (NEVER COMMIT)
+06_Models/weights/
+08_Checkpoints/*.pt
+08_Checkpoints/*.pth
+08_Checkpoints/*.ckpt
+08_Checkpoints/*.h5
+08_Checkpoints/*.keras
+08_Checkpoints/*.onnx
+08_Checkpoints/*.safetensors
+08_Checkpoints/*.bin
+09_Evaluation/EVAL*/predictions_raw*
+09_Evaluation/EVAL*/xai/raw_arrays/
+09_Evaluation/EVAL*/bootstrap_replicates/
+15_Archive/bundles/
+16_Web_Demo/samples_raw/
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.keras
+*.onnx
+*.safetensors
+*.npy
+*.npz
+*.parquet
+
+# 3. Python, Virtual Environments, Caches & Build Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+env/
+ENV/
+
+# 4. Notebooks, Secrets, Credentials & OS Metadata
+.ipynb_checkpoints/
+.env
+.env.*
+*.pem
+*.key
+*credentials*.json
+*secret*
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,17 @@
+# Deterministic text and line-ending normalization across Windows/Linux compute
+* text=auto eol=lf
+*.md text diff=markdown eol=lf
+*.csv text eol=lf
+*.py text diff=python eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.bib text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+
+# Binary formats (if ever permitted as synthetic test fixtures or cleared figures)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary

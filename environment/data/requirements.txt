@@ -1,0 +1,21 @@
+# ============================================================================
+# Phase-1 Minimal Data, QC, Graph-Splitting & Registry Runtime Lock (STEP-002)
+# Verified on Python 3.14.6 (MSC v.1944 64-bit AMD64) / Windows-11-10.0.26300-SP0
+# Note: Deep learning / GPU / XAI framework pins are deferred to Phase-2
+# (`environment/model/`) at STEP-023 after UD13 architecture roster selection.
+# Additional format-specific readers (e.g., pydicom for raw DICOM intake) must
+# be pinned and smoke-tested here prior to STEP-012 dataset acquisition.
+# ============================================================================
+
+numpy==2.5.1
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.9.1
+pillow==12.3.0
+opencv-python==5.0.0.93
+networkx==3.7
+PyYAML==6.0.3
+jsonschema==4.26.0
+pytest==9.1.1
+tabulate==0.10.0
+psutil==7.2.2
