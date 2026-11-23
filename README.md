@@ -67,5 +67,6 @@
 | `S01` / `STEP-001` | Confirm the research mandate, team roles, and unresolved-decision register | **COMPLETED** (`2026-11-23`) | `G01 PASS` ([G01 Assessment](./01_Project_Management/reviews/G01_assessment_2026-11-23.md), [DEC0001](./01_Project_Management/decision_log/DEC0001.md)) |
 | `S02` / `STEP-002` | Instantiate repository skeleton, storage-tier controls, and minimal data-tool environment | **COMPLETED** (`2026-11-23`) | Feeds `G02` ([Verification Report](./environment/data/verification.md), [DEC0014](./01_Project_Management/decision_log/DEC0014.md)) |
 | `S02` / `STEP-003` | Install blank templates (`T01–T35`), canonical CSV registries, and validation checks | **COMPLETED** (`2026-11-23`) | `G02 PASS` ([G02 Assessment](./01_Project_Management/reviews/G02_assessment_2026-11-23.md), [Dashboard](./01_Project_Management/dashboard.md)) |
-| `S03` / `STEP-004` | Approve PRISMA-style systematic literature search and screening protocol | **NEXT STEP** (`NOT STARTED`) | Feeds `G03` |
-| `S03–S16` / `STEP-005–050` | PRISMA search execution through Q1 submission, archival, and conditional web demo | `NOT STARTED` | `G03–G17` (`NOT ASSESSED`) |
+| `S03` / `STEP-004` | Approve PRISMA-style systematic literature search and screening protocol | **COMPLETED** (`2026-11-23`) | Feeds `G03` ([Search Protocol](./02_Literature/searches/protocol.md), [Provisional RQs](./02_Literature/research_questions.md), [DEC0003](./01_Project_Management/decision_log/DEC0003.md)) |
+| `S03` / `STEP-005` | Execute database searches and register deduplicated candidate papers | **NEXT STEP** (`NOT STARTED`) | Feeds `G03` |
+| `S03–S16` / `STEP-006–050` | PRISMA screening through Q1 submission, archival, and conditional web demo | `NOT STARTED` | `G03–G17` (`NOT ASSESSED`) |

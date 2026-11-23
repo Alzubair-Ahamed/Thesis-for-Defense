@@ -2,6 +2,12 @@
 
 All notable governance, repository, and scientific execution milestones for **Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images** are documented in this file.
 
+## [v1.0.0-step004] — 2026-11-23 (`STEP-004`)
+### Added
+- Created and approved the PRISMA 2020 systematic literature search, screening, and quality appraisal protocol (`02_Literature/searches/protocol.md`) featuring four Boolean query families (`Q1–Q4`), inclusion codes `INC01–INC04`, exclusion codes `EX01–EX09`, taxonomic modality/task buckets `B1–B4_CTX`, and the forensic audit plan for Table 1.1 & References `[1]`–`[12]` (`UD04`).
+- Authored provisional operational research questions `RQ1–RQ4` mapped to Objectives `O1–O6` (`02_Literature/research_questions.md`, `v0.9.0-provisional`).
+- Recorded Phase-1 `UD03` search-protocol approval in `01_Project_Management/decision_log/DEC0003.md` and `01_Project_Management/decisions.csv` (keeping final Q1 novelty positioning & RQ ratification open for `STEP-009` / `G03`).
+
 ## [v1.0.0-step003] — 2026-11-23 (`STEP-003` / `G02 PASS`)
 ### Added
 - Materialized all 35 blank canonical operational templates (`T01–T35`) in `14_Templates_Prompts/` (`T01_readme.md` through `T35_demo_runbook.md`, including `T15_config.yaml`).

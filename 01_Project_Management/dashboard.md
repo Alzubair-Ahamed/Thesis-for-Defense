@@ -1,7 +1,7 @@
 # Research Project Management Dashboard
 
 - **Document:** `01_Project_Management/dashboard.md`
-- **Last Updated:** `2026-11-23` (`STEP-003` / `G02 PASS`)
+- **Last Updated:** `2026-11-23` (`STEP-004` Completed)
 - **Approved Title:** *Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images* (`RF01`)
 - **Researchers:** Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`)
 - **Supervisors:** Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor)
@@ -15,7 +15,7 @@
 |---|---|---|---|---|
 | **S01** | `STEP-001` | Foundation, scope constitution & `UD01–UD28` assignment | `G01` | **COMPLETED (`G01 PASS`, `2026-11-23`)** |
 | **S02** | `STEP-002–003` | Repository skeleton, `T01–T35` templates, 24 CSV registries & Phase-1 `environment/data/` | `G02` | **COMPLETED (`G02 PASS`, `2026-11-23`)** |
-| **S03** | `STEP-004–007` | PRISMA literature search, screening, extraction & `UD04` bibliography audit | Feeds `G03` | **NEXT ACTIVE STAGE (`STEP-004` Ready)** |
+| **S03** | `STEP-004–007` | PRISMA literature search, screening, extraction & `UD04` bibliography audit | Feeds `G03` | **IN PROGRESS (`STEP-004` Done; `STEP-005` Next)** |
 | **S04** | `STEP-008–009` | Novelty/gap verification, Q1 contribution framing & RQ ratification | `G03` | `NOT STARTED` (`G03 NOT ASSESSED`) |
 | **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | `NOT STARTED` |
 | **S06** | `STEP-013` | Mammogram decoding, 16-bit/polarity/PHI QC & dataset suitability approval | `G04` | `NOT STARTED` (`G04 NOT ASSESSED`) |
@@ -35,7 +35,7 @@
 ## 2. Canonical Registry Inventory (24 Master CSVs)
 
 - **Populated Governance Registries (`3`):**
-  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001` Approved, `DEC0014` Phase-1 Approved, `DEC0002–0013` & `DEC0015–0028` awaiting their designated milestones)
+  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001` Approved, `DEC0003` Phase-1 Approved, `DEC0014` Phase-1 Approved; remaining rows awaiting designated milestones)
   2. `01_Project_Management/gates.csv` (`18` rows: `G01 PASS`, `G02 PASS`, `G03–G17` `NOT ASSESSED`)
   3. `01_Project_Management/risk_register.csv` (`10` initial project risk themes `RISK0001–RISK0010`)
 - **Header-Only Scientific Registries Ready for Execution Intake (`21`):**
@@ -55,4 +55,4 @@
 ---
 
 ## 3. Immediate Next Action
-- Execute **[STEP-004](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-004)** (`Approve PRISMA-style systematic literature search and screening protocol` under `02_Literature/searches/protocol.md`).
+- Execute **[STEP-005](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-005)** (`Execute database searches and register deduplicated candidate papers` in `02_Literature/papers.csv` and `02_Literature/searches/`).
