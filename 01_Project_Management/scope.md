@@ -4,7 +4,7 @@
 - **Version / Date:** `v1.0.0` / `2026-11-23`
 - **Governing Authority:** [BC_XAI_RESEARCH_OPERATING_SYSTEM.md](../BC_XAI_RESEARCH_OPERATING_SYSTEM.md) (§1, §11, §13) and `Title_defence_evaluation_report.pdf` (`RF01–RF20`)
 - **Step / Gate:** [STEP-001](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-001) / `G01`
-- **Approval Status:** Drafted from verified source facts (`RF01–RF20`); awaiting human ratification (`DEC0001` / `UD01`)
+- **Approval Status:** `Approved / Ratified` (`2026-11-23`, via `DEC0001` / `UD01`; `G01 PASS`)
 
 ---
 
