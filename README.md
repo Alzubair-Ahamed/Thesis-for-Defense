@@ -1,9 +1,10 @@
 # Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images
 
-[![Stage](https://img.shields.io/badge/Current_Stage-S03_PRISMA_Literature-blue)](./BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#stage-map)
+[![Stage](https://img.shields.io/badge/Current_Stage-S04_G03_Review_Ready-blue)](./01_Project_Management/reviews/G03_assessment_2026-11-26.md)
 [![STEP-001](https://img.shields.io/badge/STEP--001-DONE_(G01_PASS)-brightgreen)](./01_Project_Management/reviews/G01_assessment_2026-11-23.md)
 [![STEP-002--003](https://img.shields.io/badge/STEP--002--003-DONE_(G02_PASS)-brightgreen)](./01_Project_Management/reviews/G02_assessment_2026-11-23.md)
-[![Gates G03-G17](https://img.shields.io/badge/Gates_G03--G17-NOT_ASSESSED-lightgrey)](./BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-13)
+[![STEP-004--008](https://img.shields.io/badge/STEP--004--008-DONE_(49_T05_+_UD04)-brightgreen)](./02_Literature/synthesis.md)
+[![Gates G03-G17](https://img.shields.io/badge/Gates_G03--G17-NOT_ASSESSED-lightgrey)](./01_Project_Management/reviews/G03_assessment_2026-11-26.md)
 
 ## 1. Project Identity (`RF01–RF04`)
 
@@ -68,5 +69,8 @@
 | `S02` / `STEP-002` | Instantiate repository skeleton, storage-tier controls, and minimal data-tool environment | **COMPLETED** (`2026-11-23`) | Feeds `G02` ([Verification Report](./environment/data/verification.md), [DEC0014](./01_Project_Management/decision_log/DEC0014.md)) |
 | `S02` / `STEP-003` | Install blank templates (`T01–T35`), canonical CSV registries, and validation checks | **COMPLETED** (`2026-11-23`) | `G02 PASS` ([G02 Assessment](./01_Project_Management/reviews/G02_assessment_2026-11-23.md), [Dashboard](./01_Project_Management/dashboard.md)) |
 | `S03` / `STEP-004` | Approve PRISMA-style systematic literature search and screening protocol | **COMPLETED** (`2026-11-23`) | Feeds `G03` ([Search Protocol](./02_Literature/searches/protocol.md), [Provisional RQs](./02_Literature/research_questions.md), [DEC0003](./01_Project_Management/decision_log/DEC0003.md)) |
-| `S03` / `STEP-005` | Execute database searches and register deduplicated candidate papers | **NEXT STEP** (`NOT STARTED`) | Feeds `G03` |
-| `S03–S16` / `STEP-006–050` | PRISMA screening through Q1 submission, archival, and conditional web demo | `NOT STARTED` | `G03–G17` (`NOT ASSESSED`) |
+| `S03` / `STEP-005` | Execute database searches and register deduplicated candidate papers | **COMPLETED** (`2026-11-26`) | `2,207` intake records (`96` GS PDFs + `366` `DB01` PubMed + `1,594` `DB03` OpenAlex + `138` `DB05` arXiv + `13` `SEED`) → `711` `EX04` duplicates removed → `1,496` unique records (`T04` logs, [papers.csv](./02_Literature/papers.csv)); `DB02`/`DB04` institutional access blocks logged honestly |
+| `S03` / `STEP-006` | Screen candidate records and document PRISMA eligibility | **COMPLETED** (`2026-11-26`) | `62` GS full-text + `1,421` Stage-1 `title_abstract` + `6` Stage-2 OA `full_text` + `13` `UD04` `SEED` audits (`2,226` rows, [screening.csv](./02_Literature/screening.csv)) |
+| `S03` / `STEP-007` | Extract deep `T05` cards (`48` + `P0063`), `UD04` seed audit & `claims.csv` | **COMPLETED** (`2026-11-26`) | `42/42` curated local + `6` Stage-2 OA (`P0156, P0385, P0675, P0810, P1030, P1433`) + `P0063` ([summaries/](./02_Literature/summaries/), [UD04 Audit](./02_Literature/reports/report_bibliography_audit_UD04.md), [claims.csv](./02_Literature/claims.csv)) |
+| `S04` / `STEP-008–009` | Test `RF16` hypotheses, write thematic synthesis & prepare `RQ1–RQ4` / `G03` dossier | **PREP COMPLETE** (`2026-11-26`; `G03 NOT ASSESSED`) | [gaps.csv](./02_Literature/gaps.csv) (`GAP0001–0005`), [synthesis.md](./02_Literature/synthesis.md), [research_questions.md](./02_Literature/research_questions.md), [G03 Dossier](./01_Project_Management/reviews/G03_assessment_2026-11-26.md) |
+| `S05–S16` / `STEP-010–050` | Multi-dataset acquisition (`UD05`), labeling, modeling, stats, writing & defense demo | `NOT STARTED` (Blocked on `G03`) | `G04–G17` (`NOT ASSESSED`) |

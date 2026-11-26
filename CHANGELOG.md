@@ -2,6 +2,28 @@
 
 All notable governance, repository, and scientific execution milestones for **Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images** are documented in this file.
 
+## [v1.0.0-step007-008-009-prep] — 2026-11-26 (`STEP-007`–`008` Complete & `G03` Dossier Prepared)
+### Added & Changed
+- **Complete `T05` Literature Extractions (`02_Literature/summaries/`, `49` files):** Authored deep locator-backed `13`-section `T05` cards for all `42/42` curated local PDFs (`P0001–P0042`), `6` verified Stage-2 Open-Access landmarks retrieved cleanly via Europe PMC JATS XML / arXiv / PLOS ONE (`P0156, P0385, P0675, P0810, P1030, P1433`), plus `P0063` (`SEED [1]`, `PMC10572157`).
+- **Mandatory `UD04` Primary-Source Seed Audit:** Authored `02_Literature/reports/report_bibliography_audit_UD04.md` and `01_Project_Management/decision_log/DEC0004.md` resolving `Table 1.1 SL 1–10` and `Refs [1]–[12]` (`P0063–P0075`), proving `P0063` (`Khalid 2023`) analyzed Kaggle `WDBC` tabular rows in `Sec. 4 Table 3` despite abstract mammography claims and retiring all `10/10` `SL` works to quarantined `B4_CTX` / `Excluded` status (keeping `[6]–[8]` p. 10 strings flagged for physical-PDF check at `G03`).
+- **Literature Registries & Claim/Gap Synthesis (`STEP-007–008`):** Populated `02_Literature/claims.csv` (`CLAIM0001–CLAIM0010` + `claim_notes/`), `02_Literature/gaps.csv` (`GAP0001–GAP0005` + `gap_notes/`), and `02_Literature/synthesis.md`; updated `papers.csv`, `screening.csv` (`2,226` rows), `references.bib` (`965` entries), and `13_Automation/validate_registries.py` (`POPULATED_SCIENTIFIC_REGISTRIES` includes `gaps.csv` and `claims.csv`).
+- **`STEP-009` Prep Without Self-Approval:** Upgraded `02_Literature/research_questions.md` (`v1.0.0-candidate_G03`) and authored `01_Project_Management/reviews/G03_assessment_2026-11-26.md` while keeping `gates.csv` `G03 = NOT ASSESSED` awaiting supervisor ratification.
+
+## [v1.0.0-step005-006-complete] — 2026-11-26 (`STEP-005` & `STEP-006` Multi-Database Completion Prior to `STEP-007`)
+### Added & Changed
+- Executed full API bibliographic exports across all accessible protocol databases (`2016–2026`, English) in `02_Literature/searches/raw_exports/` with SHA-256 verification (`export_sha256_manifest.json`): **`DB01` PubMed** (`366` records), **`DB03` OpenAlex** (`1,594` records; open proxy for Scopus/WoS), and **`DB05` arXiv** (`138` filtered 2016–2026 records from `139` raw hits) — totaling `2,098` new database records.
+- Authored `T04` search logs for all 5 database sources: `T04_DB01_pubmed.md`, `T04_DB03_openalex.md`, `T04_DB05_arxiv.md`, plus honest institutional-subscription / API-key limitation logs `T04_DB02_ieee_xplore.md` and `T04_DB04_sciencedirect_springerlink.md`.
+- Completed deterministic cross-database/cross-query deduplication (`76` matches against baseline `P0001–P0062` + `601` internal/preprint merges = `677` open-DB `EX04` duplicates; combined total `711` duplicates removed across `2,207` intake records) and conservative Stage-1 `title_abstract` PRISMA screening across `1,421` net-new unique studies (`914` advancing to `STEP-007` full-text retrieval [`548` OA URLs + `366` `abstract_only`]; `507` excluded at Stage 1 across `EX01`/`EX02`/`EX03`/`EX05`/`EX06`/`EX07`/`EX09`).
+- Expanded `02_Literature/papers.csv` (`1,496` unique rows `P0001–P1496`), `02_Literature/screening.csv` (`2,207` total rows `SCR0001–SCR2207`), `02_Literature/references.bib` (`956` entries), and `02_Literature/searches/screening_summary.md` (`G03` remains `NOT ASSESSED` pending `STEP-007` `T05` extraction, Stage-2 full-text eligibility, and `UD04` seed verification).
+
+## [v1.0.0-step005-006-gs] — 2026-11-25 (`STEP-005` & `STEP-006` Google Scholar Batch)
+### Added & Changed
+- Protected local downloaded PDFs (`Paper/` and `02_Literature/full_texts/`) in `.gitignore` so zero copyrighted PDFs enter Git history.
+- Logged 8 executed Google Scholar query batches (`02_Literature/searches/T04_GS-Q1a.md`–`T04_GS-Q4.md`), `gs_download_manifest.csv` (`96` downloaded records), and `T04_SEED_title_report.md` (`13` Title Report seed leads).
+- Populated `02_Literature/papers.csv` (`75` rows: `P0001–P0042` curated local studies, `P0043–P0062` excluded unique studies, `P0063–P0075` unverified seed leads) and initial `02_Literature/references.bib`.
+- Recorded full-text PRISMA screening and cross-query deduplication in `02_Literature/screening.csv` (`109` rows) and `02_Literature/searches/screening_summary.md` (`96` downloaded → `34` duplicates removed → `62` unique full-text screened → `42` included across `B1`/`B2`/`B3_METH`/`B4_CTX`, `20` excluded across `EX01`/`EX02`/`EX05`/`EX06`).
+- Updated `13_Automation/validate_registries.py` and `tests/test_registries.py` to enforce foreign-key integrity on `02_Literature/{papers,screening}.csv` while keeping downstream scientific registries (`03_Datasets/`–`16_Web_Demo/`) header-only. (`DB01–DB05` systematic searches, `STEP-007` `T05`/`UD04` extraction, and `G03` remain open.)
+
 ## [v1.0.0-step004] — 2026-11-23 (`STEP-004`)
 ### Added
 - Created and approved the PRISMA 2020 systematic literature search, screening, and quality appraisal protocol (`02_Literature/searches/protocol.md`) featuring four Boolean query families (`Q1–Q4`), inclusion codes `INC01–INC04`, exclusion codes `EX01–EX09`, taxonomic modality/task buckets `B1–B4_CTX`, and the forensic audit plan for Table 1.1 & References `[1]`–`[12]` (`UD04`).

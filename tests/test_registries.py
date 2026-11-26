@@ -20,8 +20,14 @@ _spec.loader.exec_module(validator_mod)
 
 def test_live_workspace_registries_and_templates_pass() -> None:
     """All 24 canonical CSV registries and 35 templates T01-T35 in workspace must pass validation."""
-    errors = validator_mod.validate_all(ROOT, enforce_initial_scientific_empty=True)
+    errors = validator_mod.validate_all(ROOT, enforce_initial_scientific_empty=False)
     assert errors == [], f"Live workspace registry/template validation failed: {errors}"
+    with open(ROOT / "02_Literature" / "papers.csv", encoding="utf-8", newline="") as fp:
+        papers_rows = list(csv.DictReader(fp))
+    with open(ROOT / "02_Literature" / "screening.csv", encoding="utf-8", newline="") as fp:
+        screening_rows = list(csv.DictReader(fp))
+    assert len(papers_rows) >= 62, "Expected Google Scholar unique papers registered in papers.csv"
+    assert len(screening_rows) >= 96, "Expected Google Scholar screening & deduplication rows in screening.csv"
 
 
 def test_validator_rejects_dummy_scientific_row_and_broken_fk(tmp_path: Path) -> None:

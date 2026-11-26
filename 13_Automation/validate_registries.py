@@ -188,9 +188,23 @@ EXPECTED_TEMPLATES: dict[str, str] = {
 }
 
 
-def validate_all(root: Path = ROOT, enforce_initial_scientific_empty: bool = True) -> list[str]:
+POPULATED_SCIENTIFIC_REGISTRIES: set[str] = {
+    "02_Literature/papers.csv",
+    "02_Literature/screening.csv",
+    "02_Literature/gaps.csv",
+    "02_Literature/claims.csv",
+}
+
+
+def validate_all(
+    root: Path = ROOT,
+    enforce_initial_scientific_empty: bool = False,
+    allowed_populated_scientific: set[str] | None = None,
+) -> list[str]:
     """Run all registry, template, and foreign-key checks. Return list of error strings."""
     errors: list[str] = []
+    if allowed_populated_scientific is None:
+        allowed_populated_scientific = POPULATED_SCIENTIFIC_REGISTRIES
 
     # 1. Verify all 35 templates T01-T35
     tpl_dir = root / "14_Templates_Prompts"
@@ -244,14 +258,23 @@ def validate_all(root: Path = ROOT, enforce_initial_scientific_empty: bool = Tru
             pk_sets[rel_path] = pks
             rows_by_reg[rel_path] = dict_rows
 
-            if enforce_initial_scientific_empty and not rel_path.startswith("01_Project_Management/"):
-                if len(dict_rows) > 0:
+            if not rel_path.startswith("01_Project_Management/"):
+                if enforce_initial_scientific_empty and len(dict_rows) > 0:
                     errors.append(
                         f"Scientific registry {rel_path} must start header-only at G02 (found {len(dict_rows)} rows)"
+                    )
+                elif not enforce_initial_scientific_empty and rel_path not in allowed_populated_scientific and len(dict_rows) > 0:
+                    errors.append(
+                        f"Unreached scientific registry {rel_path} must remain header-only before its step (found {len(dict_rows)} rows)"
                     )
 
     # 3. Verify foreign-key integrity on populated registries
     fk_rules = [
+        ("02_Literature/screening.csv", "PaperID", "02_Literature/papers.csv"),
+        ("02_Literature/screening.csv", "DuplicateOf", "02_Literature/papers.csv"),
+        ("02_Literature/gaps.csv", "SupportingPapers", "02_Literature/papers.csv"),
+        ("02_Literature/gaps.csv", "ContradictingPapers", "02_Literature/papers.csv"),
+        ("02_Literature/claims.csv", "PaperIDs", "02_Literature/papers.csv"),
         ("03_Datasets/datasets.csv", "CandidateID", "03_Datasets/candidates.csv"),
         ("03_Datasets/releases.csv", "DatasetID", "03_Datasets/datasets.csv"),
         ("03_Datasets/releases.csv", "LabelReleaseID", "04_Labels_XAI_Governance/label_registry.csv"),
@@ -290,7 +313,7 @@ def validate_all(root: Path = ROOT, enforce_initial_scientific_empty: bool = Tru
 
 
 def main() -> int:
-    errors = validate_all(ROOT, enforce_initial_scientific_empty=True)
+    errors = validate_all(ROOT, enforce_initial_scientific_empty=False)
     if errors:
         print("VALIDATION FAILED:")
         for e in errors:
