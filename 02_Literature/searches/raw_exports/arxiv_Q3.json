@@ -1,0 +1,51 @@
+{
+  "query": "(all:\"CBIS-DDSM\" OR all:INbreast OR all:\"VinDr-Mammo\" OR all:CMMD OR all:MIAS OR all:BCDR OR all:DMID) AND (all:\"deep learning\" OR all:CNN OR all:XAI) AND (all:\"external validation\" OR all:\"cross-dataset\" OR all:\"domain generalization\" OR all:\"data leakage\")",
+  "total_count_raw": 3,
+  "records_2016_2026": [
+    {
+      "source_db": "DB05_arXiv",
+      "query_id": "AX-Q3",
+      "db_uid": "http://arxiv.org/abs/2604.23899v2",
+      "title": "Mammographic Lesion Segmentation with Lightweight Models: A Comparative Study",
+      "authors": "Helder Oliveira",
+      "year": "2026",
+      "venue": "arXiv",
+      "doi": "",
+      "url": "http://arxiv.org/abs/2604.23899v2",
+      "oa_pdf_url": "http://arxiv.org/pdf/2604.23899v2",
+      "source_version": "preprint",
+      "pub_types": "preprint",
+      "abstract": "Breast cancer is a leading cause of cancer-related mortality among women worldwide, with mammography as the primary screening tool. While deep learning models have shown strong performance in lesion segmentation, most rely on computationally intensive architectures that limit their use in resource-constrained environments. This study evaluates the performance and efficiency of lightweight models for mammographic lesion segmentation. Architectures including MobileNetV2, EfficientNet Lite, FPN, and Fast-SCNN were compared against a U-Net baseline using the INbreast dataset with 5-fold cross-validation. Performance was assessed using Dice score, Intersection over Union (IoU), and Recall, alongside model complexity. MobileNetV2 with Squeeze-and-Excitation (SCSE) achieved the best performance, with a Dice score of 0.5766 while using approximately 75% fewer parameters than U-Net. Cross-dataset evaluation on the DMID dataset showed reduced accuracy due to domain shift but preserved recall. These results demonstrate that lightweight architectures offer a practical balance between performance and efficiency for deployable CAD systems."
+    },
+    {
+      "source_db": "DB05_arXiv",
+      "query_id": "AX-Q3",
+      "db_uid": "http://arxiv.org/abs/2607.18678v1",
+      "title": "Cross-Dataset Generalization in Breast MRI Tumor Classification via Class-Wise Dataset Mixing",
+      "authors": "Mohammad Ali Dadrast; Hamid Usefi",
+      "year": "2026",
+      "venue": "arXiv",
+      "doi": "",
+      "url": "http://arxiv.org/abs/2607.18678v1",
+      "oa_pdf_url": "http://arxiv.org/pdf/2607.18678v1",
+      "source_version": "preprint",
+      "pub_types": "preprint",
+      "abstract": "Breast MRI is highly sensitive for detecting breast tumors, but exams contain many slices and require substantial reading time. Deep learning models often perform well on internal splits but can fail across institutions because of domain shift and dataset-origin bias. We study this failure mode for binary breast MRI tumor classification. EfficientNet-B3 and WaveViT-Small are trained using Duke Breast Cancer MRI and fastMRI, and evaluated only on the independent multi-center MAMA-MIA cohort. In a deliberately confounded setup, where label is perfectly correlated with dataset origin, external accuracy is near chance (0.5048--0.5265), despite very high recall. We then construct a mixed training set in which each class contains samples from both Duke and fastMRI, while preserving patient-level splitting, augmentation, and leakage controls. On MAMA-MIA, dataset mixing improves accuracy/F1 to 0.8463/0.8625 for WaveViT-Small and 0.8884/0.8994 for EfficientNet-B3. These results show that controlling dataset-origin bias is important for reliable breast MRI classification."
+    },
+    {
+      "source_db": "DB05_arXiv",
+      "query_id": "AX-Q3",
+      "db_uid": "http://arxiv.org/abs/2604.10424v1",
+      "title": "Membership Inference Attacks Expose Participation Privacy in ECG Foundation Encoders",
+      "authors": "Ziyu Wang; Elahe Khatibi; Ankita Sharma; Krishnendu Chakrabarty; Sanaz Rahimi Moosavi; Farshad Firouzi; Amir Rahmani",
+      "year": "2026",
+      "venue": "arXiv",
+      "doi": "",
+      "url": "http://arxiv.org/abs/2604.10424v1",
+      "oa_pdf_url": "http://arxiv.org/pdf/2604.10424v1",
+      "source_version": "preprint",
+      "pub_types": "preprint",
+      "abstract": "Foundation-style ECG encoders pretrained with self-supervised learning are increasingly reused across tasks, institutions, and deployment contexts, often through model-as-a-service interfaces that expose scalar scores or latent representations. While such reuse improves data efficiency and generalization, it raises a participation privacy concern: can an adversary infer whether a specific individual or cohort contributed ECG data to pretraining, even when raw waveforms and diagnostic labels are never disclosed? In connected-health settings, training participation itself may reveal institutional affiliation, study enrollment, or sensitive health context. We present an implementation-grounded audit of membership inference attacks (MIAs) against modern self-supervised ECG foundation encoders, covering contrastive objectives (SimCLR, TS2Vec) and masked reconstruction objectives (CNN- and Transformer-based MAE). We evaluate three realistic attacker interfaces: (i) score-only black-box access to scalar outputs, (ii) adaptive learned attackers that aggregate subject-level statistics across repeated queries, and (iii) embedding-access attackers that probe latent representation geometry. Using a subject-centric protocol with window-to-subject aggregation and calibration at fixed false-positive rates under a cross-dataset auditing setting, we observe heterogeneous and objective-dependent participation leakage: leakage is most pronounced in small or institution-specific cohorts and, for contrastive encoders, can saturate in embedding space, while larger and more diverse datasets substantially attenuate operational tail risk. Overall, our results show that restricting access to raw signals or labels is insufficient to guarantee participation privacy, underscoring the need for deployment-aware auditing of reusable biosignal foundation encoders in connected-health systems."
+    }
+  ]
+}
