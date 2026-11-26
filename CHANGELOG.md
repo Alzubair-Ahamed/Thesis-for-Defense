@@ -2,6 +2,12 @@
 
 All notable governance, repository, and scientific execution milestones for **Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images** are documented in this file.
 
+## [v1.0.0-g03-pass-step010] — 2026-11-27 (`G03 PASS` & `STEP-010` Dataset Discovery)
+### Added & Changed
+- **Storage Firewall Hardened (`.gitignore`):** Expanded dataset and paper exclusions (`Dataset*/`, `dataset*/`, `Paper*/`, `Papers/`, `03_Datasets/{raw,downloads,external,cache,images,masks,processed,releases}/`, raw imaging/archive extensions, and `*.pdf` outside cleared output paths) and pushed literature + management baseline across 8 clean sequential commits.
+- **Gate `G03 PASS` (`STEP-009` Ratified):** Recorded Supervisor Israt Jahan's approval (`2026-11-27`) of **Option 1** and `RQ1–RQ4` ([DEC0003](01_Project_Management/decision_log/DEC0003.md), [DEC0004](01_Project_Management/decision_log/DEC0004.md), [gates.csv](01_Project_Management/gates.csv), [research_questions.md](02_Literature/research_questions.md)), honestly preserving out-of-repo `[6]–[8]` transcription status as deferred non-blocking note.
+- **Public 2D Mammography Discovery (`STEP-010` / `UD05`):** Audited 11 authoritative 2D mammogram sources (`CAND0001–CAND0011`) in `03_Datasets/candidates.csv` and `03_Datasets/reports/candidate_comparison.md` (zero restricted image downloads; segregated biopsy pathology tracks `CMMD/CBIS-DDSM/INbreast/DMID` from radiologist BI-RADS triage `VinDr-Mammo`; quarantined upstream overlap across `DDSM`/`CBIS-DDSM`/`Mini-DDSM` via `DuplicateOf`). Updated `13_Automation/validate_registries.py` for `03_Datasets/candidates.csv` + `DuplicateOf` FK enforcement.
+
 ## [v1.0.0-step007-008-009-prep] — 2026-11-26 (`STEP-007`–`008` Complete & `G03` Dossier Prepared)
 ### Added & Changed
 - **Complete `T05` Literature Extractions (`02_Literature/summaries/`, `49` files):** Authored deep locator-backed `13`-section `T05` cards for all `42/42` curated local PDFs (`P0001–P0042`), `6` verified Stage-2 Open-Access landmarks retrieved cleanly via Europe PMC JATS XML / arXiv / PLOS ONE (`P0156, P0385, P0675, P0810, P1030, P1433`), plus `P0063` (`SEED [1]`, `PMC10572157`).

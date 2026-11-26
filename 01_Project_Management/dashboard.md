@@ -1,7 +1,7 @@
 # Research Project Management Dashboard
 
 - **Document:** `01_Project_Management/dashboard.md`
-- **Last Updated:** `2026-11-26` (`STEP-007` Extraction/`UD04`, `STEP-008` Gap/Synthesis, and `STEP-009` `G03` Assessment Dossier Prepared; **`G03` Awaiting Supervisor Ratification**)
+- **Last Updated:** `2026-11-27` (**`G03 PASS` Ratified by Supervisor Israt Jahan**; **`STEP-010` Candidate Discovery Complete**; **`STEP-011` DUA/Ethics Next**)
 - **Approved Title:** *Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images* (`RF01`)
 - **Researchers:** Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`)
 - **Supervisors:** Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor)
@@ -16,8 +16,8 @@
 | **S01** | `STEP-001` | Foundation, scope constitution & `UD01–UD28` assignment | `G01` | **COMPLETED (`G01 PASS`, `2026-11-23`)** |
 | **S02** | `STEP-002–003` | Repository skeleton, `T01–T35` templates, 24 CSV registries & Phase-1 `environment/data/` | `G02` | **COMPLETED (`G02 PASS`, `2026-11-23`)** |
 | **S03** | `STEP-004–007` | PRISMA literature search, screening, `49` `T05` extractions (`42` core + `6` OA + `P0063`) & `UD04` audit | Feeds `G03` | **COMPLETED (`2026-11-26`; residual `908` DB abstracts `Pending_FullText`)** |
-| **S04** | `STEP-008–009` | Novelty/gap verification (`GAP0001–0005`), thematic synthesis & `RQ1–RQ4` dossier | `G03` | **DOSSIER PREPARED (`G03 NOT ASSESSED` — Pending Supervisor Ratification)** |
-| **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | `NOT STARTED` |
+| **S04** | `STEP-008–009` | Novelty/gap verification (`GAP0001–0005`), thematic synthesis & `RQ1–RQ4` dossier | `G03` | **COMPLETED (`G03 PASS`, `2026-11-27` — Option 1 & `RQ1–RQ4` Ratified)** |
+| **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | **IN PROGRESS (`STEP-010` Done [`CAND0001–0011`]; `STEP-011` DUA/Ethics Next)** |
 | **S06** | `STEP-013` | Mammogram decoding, 16-bit/polarity/PHI QC & dataset suitability approval | `G04` | `NOT STARTED` (`G04 NOT ASSESSED`) |
 | **S07** | `STEP-014–015` | FFDM/ROI paradigm (`UD07`), label/ROI-mask rules (`UD08–09`) & prospective XAI (`XAIP0001`) | `G05` | `NOT STARTED` (`G05 NOT ASSESSED`) |
 | **S08** | `STEP-016–018` | Pilot & full-dataset label/ROI-mask verification and `LBL####` freeze | `G06` | `NOT STARTED` (`G06 NOT ASSESSED`) |
@@ -34,16 +34,17 @@
 
 ## 2. Canonical Registry Inventory (24 Master CSVs)
 
-- **Populated Registries (`7`):**
-  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001` Approved, `DEC0003` Phase-1 Approved / Phase-2 Prepared for `G03`, `DEC0004` Prepared Pending Supervisor Ratification, `DEC0014` Phase-1 Approved)
-  2. `01_Project_Management/gates.csv` (`18` rows: `G01 PASS`, `G02 PASS`, `G03` Dossier Prepared [`NOT ASSESSED`], `G04–G17` `NOT ASSESSED`)
+- **Populated Registries (`8`):**
+  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001` Approved, `DEC0003` Approved [`Option 1 + RQ1–RQ4`, `2026-11-27`], `DEC0004` Approved [`2026-11-27`], `DEC0005` Shortlist Prepared [`STEP-010`], `DEC0014` Phase-1 Approved)
+  2. `01_Project_Management/gates.csv` (`18` rows: `G01 PASS`, `G02 PASS`, `G03 PASS` [`2026-11-27`], `G04–G17` `NOT ASSESSED`)
   3. `01_Project_Management/risk_register.csv` (`10` initial project risk themes `RISK0001–RISK0010`)
   4. `02_Literature/papers.csv` (`1,496` rows: `42/42` curated local PDFs extracted to `T05` + `6` Stage-2 OA landmarks verified/extracted + `13` `UD04` `SEED` leads audited/quarantined + `908` Stage-1 candidates `Pending_FullText_*` + `527` Stage-1/GS exclusions)
   5. `02_Literature/screening.csv` (`2,226` rows: `62` GS FT + `34` GS dup + `13` SEED intake + `677` open-DB dup + `1,421` Stage-1 `title_abstract` + `6` Stage-2 OA `full_text` + `13` `seed_ud04_audit`)
   6. `02_Literature/gaps.csv` (`5` verified gaps `GAP0001–GAP0005` testing `RF16` & `UD04`, backed by `02_Literature/gap_notes/`)
   7. `02_Literature/claims.csv` (`10` primary-source empirical claims `CLAIM0001–CLAIM0010`, backed by `02_Literature/claim_notes/`)
-- **Header-Only Scientific Registries Awaiting Downstream Steps (`17`):**
-  - `03_Datasets/{candidates,datasets,releases}.csv`
+  8. `03_Datasets/candidates.csv` (`11` audited primary/derived 2D mammography collections `CAND0001–CAND0011` backing `candidate_comparison.md`)
+- **Header-Only Scientific Registries Awaiting Downstream Steps (`16`):**
+  - `03_Datasets/{datasets,releases}.csv`
   - `04_Labels_XAI_Governance/{label_registry,xai_protocol_registry}.csv`
   - `05_Preprocessing/preprocessing_registry.csv`
   - `06_Models/{candidates,model_registry}.csv`
@@ -58,4 +59,4 @@
 ---
 
 ## 3. Immediate Next Action
-- Conduct **Supervisor `G03` Review Meeting** using [G03_assessment_2026-11-26.md](./reviews/G03_assessment_2026-11-26.md): (1) select bounded Q1 contribution Option 1–3 (`DEC0003` Phase 2) and ratify `RQ1–RQ4` (`02_Literature/research_questions.md`), and (2) verify printed `[6]–[8]` strings in local `Title_defence_evaluation_report.pdf` `p. 10` to close `DEC0004` (`UD04`), unblocking `STEP-010` (`UD05–UD06` dataset audit).
+- Execute **[STEP-011](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-011)** (`UD06`: verify verbatim DUAs, licenses, compute-host terms, and DIU institutional ethics/secondary-data waiver in `03_Datasets/licenses/` and `03_Datasets/reports/access_decision.md` before any `STEP-012` raw archive download for `VinDr-Mammo`, `CMMD`, `CBIS-DDSM`, `INbreast`, `DMID`, `MIAS`, and conditional `EMBED`).

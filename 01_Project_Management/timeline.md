@@ -10,8 +10,8 @@
 |---|---|---|---|---|
 | **S01 Foundation & Scope** | `STEP-001` | `G01` | 2–4 hours | **DONE (`2026-11-23`)** |
 | **S02 Repository, Templates & Registries** | `STEP-002–003` | `G02` | 7–11 hours | **DONE (`2026-11-23`)** |
-| **S03–S04 PRISMA Literature & Q1 RQs** | `STEP-004–009` | `G03` | 15–25 hours across search/extraction batches | **DOSSIER READY (`STEP-007–009` Prep Complete `2026-11-26`; `G03` Pending Supervisor Ratification)** |
-| **S05–S06 6-Dataset Discovery, DUAs & QC** | `STEP-010–013` | `G04` | 12–20 hours + portal DUA turnaround | `PENDING` |
+| **S03–S04 PRISMA Literature & Q1 RQs** | `STEP-004–009` | `G03` | 15–25 hours across search/extraction batches | **DONE (`G03 PASS`, `2026-11-27`)** |
+| **S05–S06 6-Dataset Discovery, DUAs & QC** | `STEP-010–013` | `G04` | 12–20 hours + portal DUA turnaround | **IN PROGRESS (`STEP-010` Done `2026-11-27`; `STEP-011` DUA/Ethics Next)** |
 | **S07–S08 Label/ROI-Mask Audit & XAIP Lock** | `STEP-014–018` | `G05`, `G06` | 15–25 hours | `PENDING` |
 | **S09 Preprocessing, Patient Split & Release** | `STEP-019–021` | `G07`, `G08` | 11–17 hours + materialization runtime | `PENDING` |
 | **S10 CNN Roster, Phase-2 Env & Core Package** | `STEP-022–026` | `G09` | 20–35 hours development & smoke testing | `PENDING` |

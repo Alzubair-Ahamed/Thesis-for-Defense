@@ -193,6 +193,7 @@ POPULATED_SCIENTIFIC_REGISTRIES: set[str] = {
     "02_Literature/screening.csv",
     "02_Literature/gaps.csv",
     "02_Literature/claims.csv",
+    "03_Datasets/candidates.csv",
 }
 
 
@@ -275,6 +276,7 @@ def validate_all(
         ("02_Literature/gaps.csv", "SupportingPapers", "02_Literature/papers.csv"),
         ("02_Literature/gaps.csv", "ContradictingPapers", "02_Literature/papers.csv"),
         ("02_Literature/claims.csv", "PaperIDs", "02_Literature/papers.csv"),
+        ("03_Datasets/candidates.csv", "DuplicateOf", "03_Datasets/candidates.csv"),
         ("03_Datasets/datasets.csv", "CandidateID", "03_Datasets/candidates.csv"),
         ("03_Datasets/releases.csv", "DatasetID", "03_Datasets/datasets.csv"),
         ("03_Datasets/releases.csv", "LabelReleaseID", "04_Labels_XAI_Governance/label_registry.csv"),
