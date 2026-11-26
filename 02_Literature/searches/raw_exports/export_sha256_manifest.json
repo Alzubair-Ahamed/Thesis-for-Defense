@@ -1,0 +1,14 @@
+{
+  "pubmed_Q1.json": "fef4cfbd7f6cba23db55daf34bfa4f3222f69843ab6a16954c5dc6b25a15e8fe",
+  "pubmed_Q2.json": "09db28db60301467dd0829bdb822b7bdf40f9bfa50a3c25dd13f80da5c6c1a60",
+  "pubmed_Q3.json": "1dcdeae6b8f2cd4efbbddd279147f549698c857f4cb887800ca3a7e0bbeb3651",
+  "pubmed_Q4.json": "6202f5175c15ea9815be6f88099ea2c0bbec76a57f7d99a20eea32f11ba59781",
+  "arxiv_Q1.json": "2f23432dd9e09e3db2849c250805fbf4c38cf09aeb6c5220423b1d119cbb6fbe",
+  "arxiv_Q2.json": "865815bba321c5a89b86712683f1db452dfc222c1772c74a576502ec2f4aaa9e",
+  "arxiv_Q3.json": "4dd86e84d3b2b9e4952a79d51c2fba5ff8108b5af3a60725c25ce72d2eb8e542",
+  "arxiv_Q4.json": "b79dba926b6dd569cd8b8832a4e767beb23ff8f56073c943d5d69cecbb12a057",
+  "openalex_Q1.json": "76eeacfb81513cce1f41a5e81196f82f454f350abcb1c50407d92918b48a8216",
+  "openalex_Q2.json": "ea98917bcb47fe37ea8f693cfe987cbd9c3dac9ef7732526b3c7153138d82658",
+  "openalex_Q3.json": "fef80670c795eacf6d37c002c619413a774619f34ed542289494f516802815f6",
+  "openalex_Q4.json": "3b23e68be5f7a01893015f8595dbeb3af9c4a8498c8f14116c9a02b3ed188c86"
+}
