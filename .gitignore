@@ -4,15 +4,53 @@
 # and Local Structural Reference Templates from entering Git history.
 # ============================================================================
 
-# 0. Local-only reference files in workspace (never pushed to thesis remote)
+# 0. Local-only reference files & literature PDFs in workspace (never pushed to thesis remote)
 OPG_RESEARCH_OPERATING_SYSTEM.md
 OPG_PROJECT_EXECUTION_BLUEPRINT.md
 Title_defence_evaluation_report.pdf
+Paper/
+Papers/
+paper/
+papers/
+02_Literature/full_texts/
+02_Literature/pdfs/
+02_Literature/**/*.pdf
+Paper/**/*.pdf
+Papers/**/*.pdf
+*.pdf
+!11_Writing/**/*.pdf
+!10_Figures_Tables/**/*.pdf
 
-# 1. Tier-2 Restricted Medical Data & Patient Linkage (NEVER COMMIT)
+# 1. Tier-2 Restricted Medical Data, Datasets & Patient Linkage (NEVER COMMIT)
+Dataset/
+Datasets/
+dataset/
+datasets/
 03_Datasets/raw/
+03_Datasets/downloads/
+03_Datasets/external/
+03_Datasets/cache/
+03_Datasets/images/
+03_Datasets/masks/
+03_Datasets/processed/
+03_Datasets/releases/
 03_Datasets/manifests/*_private_linkage*
+03_Datasets/manifests/*_images*
 03_Datasets/splits/*/private_*
+03_Datasets/**/*.dcm
+03_Datasets/**/*.dicom
+03_Datasets/**/*.png
+03_Datasets/**/*.jpg
+03_Datasets/**/*.jpeg
+03_Datasets/**/*.tif
+03_Datasets/**/*.tiff
+03_Datasets/**/*.bmp
+03_Datasets/**/*.zip
+03_Datasets/**/*.tar
+03_Datasets/**/*.tar.gz
+03_Datasets/**/*.tgz
+03_Datasets/**/*.7z
+03_Datasets/**/*.rar
 04_Labels_XAI_Governance/native/
 04_Labels_XAI_Governance/exports/
 04_Labels_XAI_Governance/restricted_masks/
@@ -23,8 +61,19 @@ Title_defence_evaluation_report.pdf
 *.dcm
 *.dicom
 *.pgm
+*.ljpeg
+*.tif
+*.tiff
+*.svs
 *.nii
 *.nii.gz
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tar.bz2
+*.7z
+*.rar
 
 # 2. Tier-3 Model Checkpoints, Weights & Raw Attribution Dumps (NEVER COMMIT)
 06_Models/weights/
