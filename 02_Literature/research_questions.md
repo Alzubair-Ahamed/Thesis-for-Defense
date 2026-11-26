@@ -1,55 +1,42 @@
-# Provisional Research Questions and Objective-to-Evaluation Mapping
+# Research Questions and Objective Mapping (`STEP-009` Candidate for `G03` Ratification)
 
 | Header Field | Value |
 |---|---|
-| `Document` | `02_Literature/research_questions.md` |
-| `Version / Date` | `v0.9.0-provisional` / `2026-11-23` (`STEP-004`) |
+| `DocumentID` | `RESEARCH_QUESTIONS` |
+| `Version / Date` | `v1.0.0-candidate_G03` (Updated from `v0.9.0-provisional`, `2026-11-26`) |
 | `Owner` | Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`) |
-| `Governing Section` | [OS §1.4](../BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-01); [OS §3.3–3.4](../BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-03); [Blueprint STEP-004 & STEP-009](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-004) |
-| `Status` | **`PROVISIONAL — AWAITING STEP-008 GAP SYNTHESIS AND STEP-009 (G03) SUPERVISOR RATIFICATION`** |
+| `Approver Required` | Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor) at **`G03`** (`DEC0003` Phase 2) |
+| `Governing Inputs` | [scope.md](../01_Project_Management/scope.md) (`RF11–RF12`, `RF15`); [synthesis.md](./synthesis.md); [gaps.csv](./gaps.csv); [claims.csv](./claims.csv); [DEC0003](../01_Project_Management/decision_log/DEC0003.md); [DEC0004](../01_Project_Management/decision_log/DEC0004.md) |
+| `Status` | `CANDIDATE_FOR_G03_SUPERVISOR_RATIFICATION` (`G03: NOT ASSESSED`) |
 
 ---
 
-## 1. Overarching Report Research Question (`RF11`)
+## 1. Overarching Research Question (`RF11`, `Title_defence_evaluation_report.pdf` p. 8, Sec. 5)
 
-Preserved verbatim from `Title_defence_evaluation_report.pdf` (p. 8, Section 5):
+> *"Can an Explainable Deep Learning framework using transfer learning and mammogram images accurately detect early breast cancer while providing interpretable visual explanations that enhance clinicians' trust and diagnostic decision-making?"*
 
-> **"Can an Explainable Deep Learning framework using transfer learning and mammogram images accurately detect early breast cancer while providing interpretable visual explanations that enhance clinicians' trust and diagnostic decision-making?"**
-
----
-
-## 2. Candidate Operational Q1 Research Questions (`RQ1–RQ4` — Provisional)
-
-To translate `RF11` and Objectives `O1–O6` (`RF12`) into falsifiable, Q1-journal-grade scientific questions without pre-assuming favorable outcomes or unproven clinical-trial claims (`RF15`), the following four subordinate research questions are formulated for testing against the `STEP-005–008` PRISMA literature evidence:
-
-### `RQ1` — Controlled Multi-Architecture Diagnostic Discrimination, Calibration, and Efficiency (`O1`, `O3`, `O4`)
-> **Provisional Question:** *Under strict connected-component patient-level leakage control, how do the approved pre-trained transfer learning CNN architectures (VGG16, ResNet50, DenseNet121, EfficientNetB0, InceptionV3, MobileNetV2, Xception, and any ratified Q1 modern baseline under `UD13`) compare in binary Benign vs Malignant 2D mammogram classification across mandatory report metrics (Accuracy, Precision, Recall/Sensitivity, F1-score, AUC-ROC, Confusion Matrix) and Q1 clinical metrics (Specificity, PR-AUC, Balanced Accuracy, MCC, sensitivity-anchored operating points, Expected Calibration Error, Brier score, and computational efficiency)?*
-
-### `RQ2` — Multi-Center Cross-Dataset Generalization and Clinical Subgroup Robustness across 6 Public Mammogram Cohorts (`O2`, `O3`, `O4`)
-> **Provisional Question:** *When trained and selected strictly on internal development cohorts under connected-component patient grouping, how well do the transfer learning architectures generalize zero-shot (and across multi-center splits) to independent external public 2D mammogram datasets within the 6-dataset benchmark pool (`UD05`: evaluating CBIS-DDSM, INbreast, VinDr-Mammo, CMMD, MIAS, and BCDR/DMID/RSNA), and how does performance vary across BI-RADS breast density (A–D), abnormality subtype (mass vs calcification), and view position (CC vs MLO)?*
-
-### `RQ3` — Quantitative Explainable AI Faithfulness, Sanity Verification, Lesion ROI Localization, and Clinical Alignment (`O1`, `O5`, `O6`)
-> **Provisional Question:** *Do Grad-CAM visual explanations (and prospectively adopted XAI comparators such as Grad-CAM++, Score-CAM, LayerCAM, Integrated Gradients, Guided Backpropagation, LIME, or SHAP under `UD16`) pass Adebayo model-parameter and data randomization sanity checks, achieve superior causal perturbation faithfulness (Deletion AUC, Insertion AUC, ROAD) and lesion ROI-mask localization (Pointing Game, Energy-Based Pointing Game, thresholded Heatmap-ROI IoU/Dice) across architectures, maintain stability across training seeds and input perturbations, and align with bounded blinded clinical-advisor visual review (`UD18`)?*
-
-### `RQ4` — Controlled Single-Factor Methodological Ablation (`O2`, `O3`, `O5`)
-> **Provisional Question:** *What is the isolated, statistically paired effect of prospectively registered methodological factors—specifically (a) CLAHE contrast enhancement vs minimal deterministic preprocessing (`UD12`), (b) two-stage unfrozen fine-tuning vs frozen-backbone feature extraction (`UD15`), and (c) imbalance-aware calibrated loss vs standard binary cross-entropy (`UD15`)—on validation/test discrimination, probability calibration, and quantitative XAI lesion localization?*
+- **Post-`STEP-008` Epistemic Qualification (`RF15` & `GAP0001–GAP0004`):** Retrospective public 2D mammography modeling cannot prove real-time clinical workflow impact without prospective reader trials (outside `RF15` exclusions). Therefore, **"enhance clinicians' trust and diagnostic decision-making"** is operationalized conservatively as: (a) calibrated probabilities (`ECE`, `Brier`), (b) high-sensitivity operating-point triage (`Specificity@95%Sensitivity`), (c) verified XAI **causal faithfulness, `Adebayo` sanity invariance, chance-normalized localization, and seed stability**, and (d) **bounded blinded qualitative clinical-advisor alignment** (`UD18`).
 
 ---
 
-## 3. Provisional Traceability Matrix (`RQ1–RQ4` → `O1–O6` → Metrics & Gates)
+## 2. Finalized Candidate Operational Research Questions (`RQ1–RQ4`)
 
-| Candidate RQ | Addressed Report Objectives (`RF12`) | Required Dataset / Mask Properties | Primary Evaluation & Statistical Evidence | Claim Boundary (What Cannot Be Claimed) | Blocking Gate |
-|---|---|---|---|---|---|
-| **`RQ1`** | `O1`, `O3`, `O4` | Verified `0 = Benign`, `1 = Malignant` labels (`LBL####`); zero patient/view/duplicate leakage (`SPLIT####`) | Accuracy, Precision, Recall, Specificity, F1, AUC-ROC, PR-AUC, Confusion Matrix, ECE, Brier, Params/GFLOPs/Latency, patient-clustered 95% CIs, paired DeLong & McNemar (Holm-Bonferroni) | Cannot claim superiority where Holm-Bonferroni adjusted $p \ge 0.05$; cannot claim clinical diagnostic certainty from uncalibrated logits | `G03`, `G09`, `G11`, `G12` |
-| **`RQ2`** | `O2`, `O3`, `O4` | Multi-center 6-dataset pool (`UD05`) with cross-cohort duplicate audit; density/view/subtype metadata where available | Zero-shot external test AUC-ROC, PR-AUC, Sensitivity/Specificity at frozen validation threshold, pre/post-calibration ECE, subgroup stratified tables (`subgroups.csv`) | Cannot treat overlapping DDSM derivatives (e.g., CBIS-DDSM & Mini-DDSM) as independent external cohorts; cannot over-interpret small-$n$ subgroups | `G03`, `G04`, `G07`, `G12`, `G13` |
-| **`RQ3`** | `O1`, `O5`, `O6` | Verified co-transformed lesion ROI masks (`LBL####`, post-hoc only) on mask-equipped cohorts; prospective `XAIP####` layer map | Deletion AUC, Insertion AUC, ROAD vs random control; Adebayo cascading/independent sanity correlations; Pointing Game, EBPG, IoU/Dice; seed/perturbation stability; blinded rubric (`UD18`) | Attractive Grad-CAM overlays never prove causal reasoning if sanity or faithfulness checks fail; retrospective review is **not** a clinical trial (`RF15`) | `G03`, `G05`, `G06`, `G12`, `G13` |
-| **`RQ4`** | `O2`, `O3`, `O5` | Matched `SPLIT####` across baseline `PP0001` and ablation `PP0002` (`REL####`) | Multi-seed mean $\pm$ SD validation & locked test $\Delta\text{AUC}$, $\Delta\text{ECE}$, and $\Delta\text{EBPG}$ under single-factor control | Cannot claim a single-factor gain if multiple hyperparameters changed simultaneously; negative/null ablations must be reported fully | `G03`, `G08`, `G10`, `G12` |
+| RQ ID | Finalized Falsifiable Research Question (Gated at `G03`) | Objectives (`O1–O6`) | Verified Gaps & Claims | Primary Endpoints & Statistical Protocol |
+|---|---|---|---|---|
+| **`RQ1`** *(Diagnostic Discrimination, Granularity & Calibration Under Zero Leakage)* | **Under strict connected-component patient-level leakage control (`zero augmented/diagnostic/side leakage`) and segregated ground-truth schemas (`biopsy pathology vs radiologist BI-RADS screening triage`), how do the approved pre-trained CNNs and aspect-preserving modern baselines compare in Benign-vs-Malignant discrimination, probability calibration (`ECE`, `Brier`), clinical sensitivity-anchored operating specificity (`Specificity@95%Sensitivity`), side-vs-patient reporting delta, and computational efficiency?** | `O1`, `O3`, `O4`, `O6` | `GAP0002`; `CLAIM0002`, `CLAIM0006`, `CLAIM0008`, `CLAIM0009` | **Metrics:** `AUROC`, `PR-AUC`, `Accuracy`, `Precision`, `Recall`, `Specificity`, `F1`, `Balanced Acc`, `MCC`, `Confusion Matrix`, `Spec@95%Sens`, `ECE`, `Brier score`, `Params / GFLOPs / Latency` reported at **both patient-level & side-level** (`P0385`).<br>**Stats:** Multi-seed mean ± SD; `>=5,000`-resample **patient-clustered bootstrap 95% CIs**; paired **`DeLong`** (`AUC`) & **`McNemar`** tests with **`Holm-Bonferroni` / `BH-FDR`** adjustment. |
+| **`RQ2`** *(Cross-Vendor / Cross-Population Generalization & External Calibration-XAI Drift)* | **When evaluated strictly zero-shot across isolated multi-vendor `FFDM` (`VinDr-Mammo, CMMD, INbreast`) and digitized `SFM` (`CBIS-DDSM, MIAS/DMID`) cohorts, how severely do discrimination, calibration error (`ECE/Brier`), fixed internal thresholds, and XAI faithfulness/localization degrade across scanner vendors, screening-vs-enriched prevalence shifts, and geographic populations—and how much calibration mismatch can post-hoc validation temperature scaling recover?** | `O1`, `O4`, `O6` | `GAP0003`; `CLAIM0004`, `CLAIM0007`, `CLAIM0008` | **Metrics:** Zero-shot external `AUROC`, `PR-AUC`, `Spec@95%Sens` (`vs frozen internal threshold drift` per `P0675`), pre/post-temperature-scaling `ECE` & `Brier score`, plus external XAI **faithfulness & localization retention** (`Deletion/Insertion AUC`, `Delta-PG`, `Activation Precision`) across Castro's distribution shifts (`Acquisition, Prevalence, Population, Manifestation`). |
+| **`RQ3`** *(Quantitative XAI Faithfulness, Sanity, Density-Aware Localization & Clinical Alignment)* | **Do `Grad-CAM` and comparator saliency/attribution methods (`Grad-CAM++, LayerCAM, Score-CAM, Integrated Gradients` per `UD16`) satisfy `Adebayo` model-parameter & data-randomization sanity checks, yield measurably higher perturbation faithfulness (`Deletion/Insertion/ROAD`) and ROI localization (`Pointing Game`, chance-normalized `Delta-PG`, `EBPG`, `IoU/Dice`) on correctly vs incorrectly classified `INbreast`/`VinDr-Mammo`/`CBIS-DDSM` cases, remain stable across random seeds, and align with blinded radiologist/advisor review?** | `O1`, `O5`, `O6` | `GAP0001`; `CLAIM0001`, `CLAIM0003`, `CLAIM0005` | **Metrics:** **`Deletion AUC`**, **`Insertion AUC`**, **`ROAD`**, **`Adebayo` cascading parameter & label randomization SSIM/Spearman rank correlation**, **`Pointing Game`**, chance-normalized **`Delta-PG` (`P0810`)**, **`EBPG / half-max IoU / Dice`**, seed/perturbation **`SSIM` stability**, plus bounded blinded clinical-advisor localization/usefulness rubric (`UD18`). |
+| **`RQ4`** *(Breast Density `BI-RADS A–D` Fairness & Controlled Preprocessing / Resolution / Loss Ablations)* | **What are the controlled effects of mammography resolution (`224x224` vs aspect-preserving `>=512` / `1024x512`), contrast preprocessing (`raw 16-bit normalization` vs training-fitted `CLAHE`), class-imbalance loss (`unweighted` vs `weighted BCE / focal`), and backbone inductive bias (`CNN` vs `ConvNeXt / Swin / Hybrid`) on validation discrimination, calibration (`ECE`), BI-RADS `A–D` dense-breast fairness, and causal XAI faithfulness?** | `O2`, `O3`, `O4`, `O5` | `GAP0004`; `CLAIM0005`, `CLAIM0006` | **Subgroups & Factors:** Single-variable controlled ablations under identical patient splits & multi-seed seeds (`UD12–UD15`), stratified by **BI-RADS breast density (`A/B` vs `C/D`)**, **abnormality type (`mass` vs `calcification`)**, and **view (`CC` vs `MLO`)** (`paired DeLong / permutation + Holm-Bonferroni`). |
 
 ---
 
-## 4. Path to Final Ratification (`STEP-009` / `G03`)
-1. Execute PRISMA searches across `Q1–Q4` and register candidate papers (`STEP-005`).
-2. Screen records into buckets `B1–B4_CTX` with explicit exclusion codes (`STEP-006`).
-3. Extract included studies (`T05`) and complete the `UD04` primary-source audit of Table 1.1 & References `[1]`–`[12]` (`STEP-007`).
-4. Test `RG1–RG4` (`RF16`) in `02_Literature/gaps.csv` and `synthesis.md` (`STEP-008`).
-5. Refine and lock `RQ1–RQ4` with supervisor sign-off in `STEP-009` (`G03 PASS`).
+## 3. Binding Traceability Summary (`O1–O6` Coverage)
+
+- **`O1` (Explainable Framework):** `RQ1 + RQ2 + RQ3` (`end-to-end hashed release -> trained calibrated model -> verified XAI + CAD prototype`).
+- **`O2` (Preprocessing & Augmentation):** `RQ1 + RQ4` (`fit-free / train-only stats, bit-depth/polarity QC, aspect-preserving resolution vs 224x224, CLAHE ablation`).
+- **`O3` (Multi-Architecture Transfer Learning):** `RQ1 + RQ4` (`UD13 resolution of Sec. 2/4/6 model discrepancy + controlled Q1 baselines`).
+- **`O4` (Classification Evaluation + Q1 Rigor):** `RQ1 + RQ2 + RQ4` (all `6` required `RF09` metrics + calibration, clustered bootstrap CIs, DeLong/McNemar, external + subgroup fairness).
+- **`O5` (XAI Visualization + Quantitative Audit):** `RQ2 + RQ3 + RQ4` (`Grad-CAM` + comparators verified with `Deletion/Insertion/ROAD`, `Adebayo`, `PG/Delta-PG/IoU`, stability, external retention, and clinical advisor rubric).
+- **`O6` (Reliable Interpretable CAD Framework):** `RQ1–RQ3` (minimal local CAD inference + calibrated uncertainty + validated explanation overlays + explicit non-clinical disclaimers).
+
+> **Pending `G03` Human Sign-Off:** Final selection among Option 1 (recommended), Option 2, or Option 3 ([synthesis.md §4](./synthesis.md#4-three-bounded-q1-contribution-options-within-o1o6--rf15-for-g03-ratification)), ratification of `RQ1–RQ4`, and physical-PDF verification of `[6]–[8]` ([DEC0004](../01_Project_Management/decision_log/DEC0004.md)) remain **Unresolved / Pending Supervisor Approval** before crossing `G03` into `STEP-010` (`UD05–UD06` dataset acquisition).
