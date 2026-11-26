@@ -3,11 +3,11 @@
 | Header Field | Value |
 |---|---|
 | `DocumentID` | `RESEARCH_QUESTIONS` |
-| `Version / Date` | `v1.0.0-candidate_G03` (Updated from `v0.9.0-provisional`, `2026-11-26`) |
+| `Version / Date` | `v1.0.0` (Ratified at `G03`, `2026-11-27`) |
 | `Owner` | Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`) |
-| `Approver Required` | Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor) at **`G03`** (`DEC0003` Phase 2) |
+| `Approver Required` | Israt Jahan (Supervisor, Approved `2026-11-27`) & Ms Faiza Feroz (Co-Supervisor) at **`G03`** (`DEC0003` Phase 2) |
 | `Governing Inputs` | [scope.md](../01_Project_Management/scope.md) (`RF11–RF12`, `RF15`); [synthesis.md](./synthesis.md); [gaps.csv](./gaps.csv); [claims.csv](./claims.csv); [DEC0003](../01_Project_Management/decision_log/DEC0003.md); [DEC0004](../01_Project_Management/decision_log/DEC0004.md) |
-| `Status` | `CANDIDATE_FOR_G03_SUPERVISOR_RATIFICATION` (`G03: NOT ASSESSED`) |
+| `Status` | `RATIFIED_G03_PASS` (`Option 1 + RQ1–RQ4 Approved by Supervisor Israt Jahan, 2026-11-27`) |
 
 ---
 
@@ -39,4 +39,4 @@
 - **`O5` (XAI Visualization + Quantitative Audit):** `RQ2 + RQ3 + RQ4` (`Grad-CAM` + comparators verified with `Deletion/Insertion/ROAD`, `Adebayo`, `PG/Delta-PG/IoU`, stability, external retention, and clinical advisor rubric).
 - **`O6` (Reliable Interpretable CAD Framework):** `RQ1–RQ3` (minimal local CAD inference + calibrated uncertainty + validated explanation overlays + explicit non-clinical disclaimers).
 
-> **Pending `G03` Human Sign-Off:** Final selection among Option 1 (recommended), Option 2, or Option 3 ([synthesis.md §4](./synthesis.md#4-three-bounded-q1-contribution-options-within-o1o6--rf15-for-g03-ratification)), ratification of `RQ1–RQ4`, and physical-PDF verification of `[6]–[8]` ([DEC0004](../01_Project_Management/decision_log/DEC0004.md)) remain **Unresolved / Pending Supervisor Approval** before crossing `G03` into `STEP-010` (`UD05–UD06` dataset acquisition).
+> **Ratified at `G03` (`2026-11-27`):** **Option 1** ([synthesis.md §4](./synthesis.md#4-three-bounded-q1-contribution-options-within-o1o6--rf15-for-g03-ratification)) and **`RQ1–RQ4`** were approved by Supervisor Israt Jahan ([DEC0003](../01_Project_Management/decision_log/DEC0003.md), [G03 Assessment](../01_Project_Management/reviews/G03_assessment_2026-11-26.md)), formally unblocking `STEP-010` (`UD05–UD06` public 2D mammography dataset audit). *(Note: exact printed `[6]–[8]` strings from out-of-repo physical `Title_defence_evaluation_report.pdf p. 10` remain honestly logged as un-transcribed while all `SL 1–10` rows remain retired per [DEC0004](../01_Project_Management/decision_log/DEC0004.md).)*

@@ -7,11 +7,11 @@
 | `entity_id` | `GATE0003` (`G03`) |
 | `owner` | Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`) |
 | `date` | `2026-11-26` |
-| `status` | **`NOT ASSESSED` (`PREPARED_FOR_SUPERVISOR_RATIFICATION`)** |
+| `status` | **`PASS` (Ratified by Supervisor Israt Jahan on `2026-11-27`: Option 1 + `RQ1–RQ4` Approved)** |
 | `source_inputs` | [protocol.md](../../02_Literature/searches/protocol.md); [screening_summary.md](../../02_Literature/searches/screening_summary.md); [report_bibliography_audit_UD04.md](../../02_Literature/reports/report_bibliography_audit_UD04.md); [synthesis.md](../../02_Literature/synthesis.md); [research_questions.md](../../02_Literature/research_questions.md); [gaps.csv](../../02_Literature/gaps.csv); [claims.csv](../../02_Literature/claims.csv); [papers.csv](../../02_Literature/papers.csv); [screening.csv](../../02_Literature/screening.csv); [DEC0003](../decision_log/DEC0003.md); [DEC0004](../decision_log/DEC0004.md) |
 | `governing_section` | [OS §3.1–3.4, §13.2](../../BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-13); [Blueprint STEP-004–009](../../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-009) |
 | `sensitivity` | Tier-1 Non-Sensitive Governance Audit |
-| `reviewer` | **Pending Human Assessment & Sign-Off:** Israt Jahan (Supervisor), Ms Faiza Feroz (Co-Supervisor), Alzubair Ahamed, Md Riyadul Hasan |
+| `reviewer` | Israt Jahan (Supervisor, Approved `2026-11-27`); Ms Faiza Feroz (Co-Supervisor); Alzubair Ahamed; Md Riyadul Hasan |
 
 ---
 
@@ -19,7 +19,7 @@
 
 - **AssessmentID:** `GATE0003`
 - **GateID:** `G03` (PRISMA literature review, `UD04` audit, gap verification & RQ ratification / `STEP-009`)
-- **Current Registry State (`01_Project_Management/gates.csv`):** **`NOT ASSESSED`** *(never self-approved prematurely)*
+- **Current Registry State (`01_Project_Management/gates.csv`):** **`PASS`** (`2026-11-27`)
 - **Prepared Date:** `2026-11-26`
 - **Bound EntityVersions:**
   - `02_Literature/papers.csv` (`1,496` canonical rows: `P0001–P1496`)
@@ -45,9 +45,8 @@
 
 ---
 
-## 3. Required Human Decisions Before Setting `G03 = PASS`
+## 3. Ratified Human Decisions & Gate Outcome (`PASS` — `2026-11-27`)
 
-1. **`DEC0003` Phase 2 (`UD03`):** Select Q1 contribution option (**Option 1 recommended**: leak-free calibrated multi-architecture benchmark + `>=5` isolated mammogram tracks + 4-pillar quantitative XAI + `BI-RADS A–D` fairness) and ratify `RQ1–RQ4` in `02_Literature/research_questions.md`.
-2. **`DEC0004` (`UD04`):** Confirm handwritten `[6]–[8]` strings from physical `Title_defence_evaluation_report.pdf` `p. 10` and ratify quarantine/retirement of `SL 1–10` (`P0063–P0073`) and Ch. 1 epidemiology-only use of `[11]–[12]`.
-
-- **Current Outcome:** **`NOT ASSESSED`** *(Update `01_Project_Management/gates.csv` row `GATE0003` only after explicit human ratification of items 1 & 2, which then unblocks `STEP-010` dataset discovery under `UD05–UD06`.)*
+1. **`DEC0003` Phase 2 (`UD03`) Approved (`2026-11-27`):** Supervisor **Israt Jahan** approved **Option 1** (*Calibrated Multi-Architecture 2D Mammography Benchmark With Joint Quantitative XAI Verification & External/Density Audit*, `>=5` isolated mammogram tracks + `BI-RADS A–D` fairness + 4-pillar quantitative XAI) and ratified **`RQ1–RQ4`** in [research_questions.md](../../02_Literature/research_questions.md).
+2. **`DEC0004` (`UD04`) Approved (`2026-11-27`):** Ratified retirement and quarantine of `Table 1.1` (`SL 1–10`, `P0063–P0073`) under `B4_CTX` / `Excluded` and background-only use of `[11]–[12]` (`WHO/ACS 2024`). *Residual physical note:* exact printed `[6]–[8]` strings from out-of-repo `Title_defence_evaluation_report.pdf p. 10` remain queued as non-blocking archival transcription because zero `SL 1–10` entries survive into quantitative benchmarks.
+3. **Overall Outcome:** **`PASS` (`2026-11-27`)** — Unblocks **`STEP-010`** (Stage `S05` public 2D mammography dataset discovery & audit under `UD05–UD06`).
