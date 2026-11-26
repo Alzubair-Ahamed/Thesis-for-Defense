@@ -1,7 +1,7 @@
 # Research Project Management Dashboard
 
 - **Document:** `01_Project_Management/dashboard.md`
-- **Last Updated:** `2026-11-27` (**`G03 PASS` Ratified by Supervisor Israt Jahan**; **`STEP-010` Candidate Discovery Complete**; **`STEP-011` DUA/Ethics Next**)
+- **Last Updated:** `2026-11-27` (**`G03 PASS`**; **`STEP-010` Done**; **`STEP-011` License/DUA Audit Prepared — Awaiting DIU Ethics Waiver & Individual CITI/DUA Approvals**)
 - **Approved Title:** *Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images* (`RF01`)
 - **Researchers:** Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`)
 - **Supervisors:** Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor)
@@ -17,7 +17,7 @@
 | **S02** | `STEP-002–003` | Repository skeleton, `T01–T35` templates, 24 CSV registries & Phase-1 `environment/data/` | `G02` | **COMPLETED (`G02 PASS`, `2026-11-23`)** |
 | **S03** | `STEP-004–007` | PRISMA literature search, screening, `49` `T05` extractions (`42` core + `6` OA + `P0063`) & `UD04` audit | Feeds `G03` | **COMPLETED (`2026-11-26`; residual `908` DB abstracts `Pending_FullText`)** |
 | **S04** | `STEP-008–009` | Novelty/gap verification (`GAP0001–0005`), thematic synthesis & `RQ1–RQ4` dossier | `G03` | **COMPLETED (`G03 PASS`, `2026-11-27` — Option 1 & `RQ1–RQ4` Ratified)** |
-| **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | **IN PROGRESS (`STEP-010` Done [`CAND0001–0011`]; `STEP-011` DUA/Ethics Next)** |
+| **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | **IN PROGRESS (`STEP-010` Done; `STEP-011` Docs Ready — Pending DIU Ethics Waiver & CITI/DUAs)** |
 | **S06** | `STEP-013` | Mammogram decoding, 16-bit/polarity/PHI QC & dataset suitability approval | `G04` | `NOT STARTED` (`G04 NOT ASSESSED`) |
 | **S07** | `STEP-014–015` | FFDM/ROI paradigm (`UD07`), label/ROI-mask rules (`UD08–09`) & prospective XAI (`XAIP0001`) | `G05` | `NOT STARTED` (`G05 NOT ASSESSED`) |
 | **S08** | `STEP-016–018` | Pilot & full-dataset label/ROI-mask verification and `LBL####` freeze | `G06` | `NOT STARTED` (`G06 NOT ASSESSED`) |
@@ -59,4 +59,4 @@
 ---
 
 ## 3. Immediate Next Action
-- Execute **[STEP-011](../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-011)** (`UD06`: verify verbatim DUAs, licenses, compute-host terms, and DIU institutional ethics/secondary-data waiver in `03_Datasets/licenses/` and `03_Datasets/reports/access_decision.md` before any `STEP-012` raw archive download for `VinDr-Mammo`, `CMMD`, `CBIS-DDSM`, `INbreast`, `DMID`, `MIAS`, and conditional `EMBED`).
+- Execute **Human Approvals for `STEP-011` (`UD06`)** using [access_decision.md](../03_Datasets/reports/access_decision.md) and [DEC0006](./decision_log/DEC0006.md): (1) submit **DIU Institutional Secondary-Data Ethics Waiver** (`unblocks open CC-BY downloads for CMMD, CBIS-DDSM, DMID, MIAS in STEP-012`), (2) complete **CITI Program + PhysioNet 1.5.0** applications (`VinDr-Mammo`), and (3) send **INESC TEC** DUA inquiry (`INbreast`), keeping all downloads strictly blocked until written authorization arrives.

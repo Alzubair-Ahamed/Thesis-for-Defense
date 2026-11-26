@@ -1,0 +1,46 @@
+# Dataset Rights, Ethics & Custody Decision Matrix (`STEP-011` / `UD06`)
+
+- **Document:** `03_Datasets/reports/access_decision.md`
+- **Date:** `2026-11-27`
+- **Owners:** Md Riyadul Hasan (`232-15-486`, Data Steward) & Alzubair Ahamed (`232-15-591`, Verifier)
+- **Governing Contracts:** [OS §1.5, §4.1, §10.2](../../BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-04); [Blueprint STEP-011](../../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-011); [DEC0006](../../01_Project_Management/decision_log/DEC0006.md); [candidates.csv](../candidates.csv)
+- **Strict Non-Fabrication Notice:** **Zero** institutional waiver numbers, signatures, CITI dates, or custodian approvals have been invented or assumed. Every shortlisted dataset remains gated on **written DIU secondary-data ethics/waiver determination**, and credentialed/restricted datasets remain strictly blocked from `STEP-012` download until individual user approvals are archived outside Git.
+
+---
+
+## 1. Five-Dimension Legal, Compute, Publication & Custody Matrix (`CAND0001–CAND0010` Shortlist)
+
+| `CAND` | Dataset | `(a)` Research Download & Processing | `(b)` Cloud / Remote GPU Compute Rule | `(c)` Thesis / Q1 Example Figures | `(d)` Defense Web Demo Sample (`UD27`) | `(e)` Derived Weights Release (`UD24`) | Current Gate Status (`2026-11-27`) |
+|---|---|---|---|---|---|---|---|
+| **`CAND0002`** | **`CMMD`** (`TCIA`, `DOI: 10.7937/tcia.eqde-4b16`) | **Permitted (`CC BY 4.0`)** after DIU waiver | **Permitted** (local or access-controlled cloud GPU; retain attribution & zero re-id) | **Permitted** (de-identified + DOI + NIH TCIA acknowledgment) | **Permitted** (curated de-identified + DOI attribution; research disclaimer) | **Permitted (`CC BY 4.0`)** with upstream DOI attribution | **`OPEN_LICENSE_PENDING_DIU_WAIVER`** ([LICENSE](../licenses/LICENSE_TCIA_CBIS_DDSM_and_CMMD.md)) |
+| **`CAND0005`** | **`CBIS-DDSM`** (`TCIA`, `DOI: 10.7937/K9/TCIA.2016.7O02S9CY`) | **Permitted (`CC BY 3.0`)** after DIU waiver | **Permitted** (local or access-controlled cloud GPU) | **Permitted** (de-identified + Sawyer-Lee 2016/2017 DOI + NIH TCIA credit) | **Permitted** (curated de-identified + DOI attribution; research disclaimer) | **Permitted (`CC BY 3.0`)** with upstream DOI attribution | **`OPEN_LICENSE_PENDING_DIU_WAIVER`** ([LICENSE](../licenses/LICENSE_TCIA_CBIS_DDSM_and_CMMD.md)) |
+| **`CAND0007`** | **`DMID`** (`Figshare`, `DOI: 10.6084/m9.figshare.24522883`) | **Permitted (`CC BY 4.0`)** after DIU waiver | **Permitted** (local or access-controlled cloud GPU) | **Permitted** (de-identified + Oza et al. DOI attribution) | **Permitted** (curated de-identified + DOI attribution; research disclaimer) | **Permitted (`CC BY 4.0`)** with Oza et al. attribution | **`OPEN_LICENSE_PENDING_DIU_WAIVER`** ([LICENSE](../licenses/LICENSE_DMID_Figshare.md)) |
+| **`CAND0008`** | **`MIAS` (`v1.21` Apollo)** (`10.17863/CAM.105113`) | **Permitted (`CC BY 2.0 UK`)** after Apollo URL verify + DIU waiver *(PEIPA if v1.21 unavailable)* | **Permitted** (`Apollo CC BY` — if PEIPA fallback, private storage only) | **Permitted** with Suckling et al. (1994) + DOI citation | **Permitted (`Apollo CC BY`)**; disallow raw upload if PEIPA non-redistribute applies | **Permitted (`Apollo CC BY`)** | **`OPEN_URL_CHECK_PENDING_DIU_WAIVER`** ([LICENSE](../licenses/LICENSE_MIAS_Cambridge_Apollo_and_PEIPA.md)) |
+| **`CAND0001`** | **`VinDr-Mammo`** (`PhysioNet 1.5.0`, `10.13026/br2v-7517`) | **BLOCKED until individual CITI + PhysioNet Credentialed DUA** + DIU waiver (`no team copy sharing to uncredentialed accounts`) | **Restricted Private Only:** Secure private/institutional cloud VM permitted; **NEVER** upload to public Kaggle Datasets / public cloud buckets | **Permitted ONLY if strict de-identification holds** + zero institution leak; **associated analysis code MUST be open-sourced** | **DO NOT redistribute/bundle downloadable VinDr samples in public web app** (`use TCIA/Figshare CC-BY examples for preloaded demo gallery`) | Permitted for weights (`no raw DICOM/PHI reconstruction`; open analysis code required by DUA!) | **`BLOCKED_PENDING_CITI_PHYSIONET_AND_WAIVER`** ([DUA](../licenses/DUA_VinDr_Mammo_PhysioNet.md)) |
+| **`CAND0003`** | **`INbreast`** (`INESC TEC Porto`, `10.1016/j.acra.2011.09.014`) | **BLOCKED pending official custodian DUA** *(legacy portal offline risk; unofficial Kaggle mirrors **BANNED**)* | Subject to custodian written approval (**private local/institutional compute preferred**) | Subject to custodian written approval & non-identifying crop rules | **DO NOT bundle raw images in public web demo without written custodian permission** | Check custodian terms; avoid embedding identifiable institutional headers | **`BLOCKED_PENDING_CUSTODIAN_RESPONSE`** ([DUA](../licenses/DUA_INbreast_INESC_TEC.md)) |
+| **`CAND0010`** | **`EMBED` (AWS `20%` Open)** (`Emory RUA`) | **BLOCKED until individual Emory RUA + AWS access** + DIU waiver (`2D FFDM only`) | Private authenticated cloud/local only (`no public mirroring or shared links`) | De-identified figures only subject to Emory RUA privacy rules | **PROHIBITED** from hosting/reproducing raw EMBED samples publicly | **PROHIBITED FROM PUBLIC WEIGHT RELEASE IF TRAINED/FINETUNED ON EMBED** *(zero-shot external evaluation ONLY avoids weight taint!)* | **`BLOCKED_PENDING_EMORY_RUA_AND_STORAGE`** ([DUA](../licenses/DUA_EMBED_Emory_AWS.md)) |
+
+---
+
+## 2. Two-Tier Compute & Storage Custody Protocol (`UD06` + `DEC0014`)
+
+1. **Tier-2 Encrypted Local / Private Access-Controlled Compute Only:**
+   - All raw archives (`03_Datasets/raw/DS####/`), DICOM metadata, linkage CSVs, and ROI masks remain **strictly outside Git** via [.gitignore](../../.gitignore).
+   - Private GPU training (local workstation or private authenticated institutional/cloud VM accessible solely to credentialed team members) is compliant across all datasets **provided raw `VinDr-Mammo`, `INbreast`, and `EMBED` bytes are NEVER exposed in public notebooks, public Kaggle Datasets, or unauthenticated cloud buckets**.
+2. **Code-Sharing & Weight-Release Hygiene (`UD24` Pre-Alignment):**
+   - `VinDr-Mammo` PhysioNet DUA **requires open release of analysis code** upon publishing results (`MIT code planned`).
+   - Any model trained on **`TCIA` (`CMMD`, `CBIS-DDSM`) + `Figshare` (`DMID`) + `VinDr-Mammo`** avoids Emory's public-weight release ban (`whereas touching EMBED in training blocks open weight release under Emory RUA` — therefore, if `EMBED` clears RUA later, reserve it strictly for **zero-shot held-out evaluation**!).
+3. **Web Defense Demo Sample Rule (`UD27` Pre-Alignment):**
+   - Any preloaded sample mammograms in the conditional FYDP web demo (`Stage S16`) MUST be drawn strictly from open-attribution **`CC BY`** datasets (`CBIS-DDSM`, `CMMD`, `DMID`, `MIAS Apollo`) with DOI credits and a prominent **non-clinical research-only disclaimer** — NEVER raw `VinDr-Mammo`, `INbreast`, or `EMBED` patient exams.
+
+---
+
+## 3. Mandatory Human / Institutional Actions Required to Close `UD06` (`DEC0006`)
+
+To unlock `STEP-012` downloads **lawfully**:
+1. **DIU Ethics Committee / Supervisor Determination (`ALL` datasets):** Researchers + Supervisor **Israt Jahan** obtain written secondary-data ethics exemption/waiver confirming secondary use of fully de-identified public mammography datasets (`RF01`, zero patient recruitment/trials per `RF15`). Log actual reference ID and date in [DEC0006](../../01_Project_Management/decision_log/DEC0006.md) (`never fabricate`).
+2. **Batch A Ready Immediately After Waiver (`4` Open `CC BY` Datasets):** `CMMD`, `CBIS-DDSM`, `DMID`, `MIAS (v1.21 Apollo)` -> proceed to `STEP-012` raw acquisition & SHA-256 inventory once DIU waiver is recorded.
+3. **Batch B Pending Individual Credentialing / Custodian Responses (`Do NOT download yet`):**
+   - **Action 3a (`VinDr-Mammo`):** Both `Md Riyadul Hasan` and `Alzubair Ahamed` complete **CITI Program** training and apply for **PhysioNet Credentialed Health Data License 1.5.0** access to `vindr-mammo/1.0.0`.
+   - **Action 3b (`INbreast`):** Email INESC TEC / University of Porto custodians (Prof. Jaime S. Cardoso / Breast Research Group) using draft in [DUA_INbreast_INESC_TEC.md](../licenses/DUA_INbreast_INESC_TEC.md); enforce deadline cutoff so contingency (`DMID + CMMD + CBIS-DDSM + VinDr-Mammo + MIAS`) guarantees `>=5` cohorts regardless.
+   - **Action 3c (`EMBED`):** Decide whether `20%` `2D`-only `s3://embed-dataset-open` RUA turnaround + S3 storage footprint justifies inclusion strictly as an extra zero-shot external cohort.
