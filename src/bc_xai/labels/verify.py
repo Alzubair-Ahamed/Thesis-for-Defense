@@ -1282,6 +1282,11 @@ def _harmonize_dmid(
         else:
             raise ValueError(f"Unmapped DMID class token(s): {cls_tokens} on {stem}")
 
+        # ADJ-017-02 Option B: exclude scans with sheet-vs-report clinical discordance cleanly
+        if conc.startswith("discordant_"):
+            btarget, lclass, ptier = "Excluded", "Excluded_ReportMetadataDiscordance", "Excluded"
+            sub_a, sub_b, les_t = False, False, False
+
         pix_tif = pix_dir / f"{stem}.tif"
         has_tif = pix_tif.is_file()
         should_verify = verify_mask_ids is None or img_id in verify_mask_ids

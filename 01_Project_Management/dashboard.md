@@ -1,7 +1,7 @@
 # Research Project Management Dashboard
 
 - **Document:** `01_Project_Management/dashboard.md`
-- **Last Updated:** `2026-11-28` (**`STEP-016` Pilot Accepted & `T09 v1.0.1` Adopted**; `G01–G05 PASS`, `5` Clean `CC BY` Cohorts = `7,420` Retained Scans, Launching `STEP-017` Full Audit)
+- **Last Updated:** `2026-11-28` (**`STEP-017` Full Audit Complete**; `G01–G05 PASS`, `5` Clean `CC BY` Cohorts = `7,437` Acquired / `7,420` Retained Audited, Ready for `STEP-018` `LBL####` Freeze & `G06`)
 - **Approved Title:** *Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images* (`RF01`)
 - **Researchers:** Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`)
 - **Supervisors:** Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor)
@@ -20,7 +20,7 @@
 | **S05** | `STEP-010–012` | 6-dataset public 2D mammography discovery (`UD05`), DUAs/ethics (`UD06`) & raw intake | Feeds `G04` | **COMPLETED (`G04 PASS`, `2026-11-28` — `DEC0005` & `DEC0006` Batch A Approved; `5` `CC BY` Cohorts Locked)** |
 | **S06** | `STEP-013` | Mammogram decoding, 16-bit/polarity/PHI QC & dataset suitability approval | `G04` | **COMPLETED (`G04 PASS`, `2026-11-28` — `7,420` Retained / `17` Clones Quarantined / `0` Integrity Errors)** |
 | **S07** | `STEP-014–015` | FFDM/ROI paradigm (`UD07`), label/ROI-mask rules (`UD08–09`) & prospective XAI (`XAIP0001`) | `G05` | **COMPLETED (`G05 PASS`, `2026-11-28` — `DEC0007–0009`, `DEC0016–0018`, `T09 v1.0.0` & `XAIP0001` Ratified)** |
-| **S08** | `STEP-016–018` | Pilot & full-dataset label/ROI-mask verification and `LBL####` freeze | `G06` | **IN PROGRESS (`STEP-016` Pilot `N=170` Accepted & `T09 v1.0.1` Ratified `2026-11-28`; Executing `STEP-017` Full Audit)** |
+| **S08** | `STEP-016–018` | Pilot & full-dataset label/ROI-mask verification and `LBL####` freeze | `G06` | **IN PROGRESS (`STEP-017` Full Audit `N=7,437` Closed `2026-11-28` w/ `ADJ-017-02` Option B — Ready for `STEP-018` `LBL####` Freeze & `G06`)** |
 | **S09** | `STEP-019–021` | Preprocessing design, connected-component patient split & `REL####` release | `G07`, `G08` | `NOT STARTED` (`G07–G08 NOT ASSESSED`) |
 | **S10** | `STEP-022–026` | Transfer learning CNN roster (`UD13`), Phase-2 `environment/model/`, `src/bc_xai/` & smoke/recovery | `G09` | `NOT STARTED` (`G09 NOT ASSESSED`) |
 | **S11** | `STEP-027–031` | Multi-architecture CNN training, controlled ablations & multi-seed runs | `G10` (per EXP) | `NOT STARTED` (`G10 NOT ASSESSED`) |
@@ -61,5 +61,5 @@
 ---
 
 ## 3. Immediate Next Action
-- **Active Execution (`S08 / STEP-017`):** `STEP-016` Pilot accepted & [label_mask_protocol_v1.0.1.md](../04_Labels_XAI_Governance/protocols/label_mask_protocol_v1.0.1.md) ratified ([pilot_label_mask_audit.md](../04_Labels_XAI_Governance/reviews/pilot_label_mask_audit.md), [STEP016_pilot_discrepancies.md](../04_Labels_XAI_Governance/adjudications/STEP016_pilot_discrepancies.md)); running full-corpus **`STEP-017` (`--mode full` across `7,420` retained / `7,437` primary scans)** -> `STEP-018` `LBL####` freeze (`G06`).
+- **Ready for `S08 / STEP-018` (`LBL####` Freeze & `G06`):** `STEP-017` full-corpus label & ROI-mask audit (`7,437` primary / `7,420` retained, `5/5` arithmetic closure `True`, `1,121` verified masks, `ADJ-017-02` Option B closed) is complete in [STEP017_full_label_mask_audit.md](../04_Labels_XAI_Governance/reviews/STEP017_full_label_mask_audit.md) and [STEP017_full_adjudications.md](../04_Labels_XAI_Governance/adjudications/STEP017_full_adjudications.md); next execute **`STEP-018` (`label_registry.csv` `LBL####` freeze + `GATE0006 = PASS`)**.
 - **Optional Batch B Queue (Parallel Non-Blocking):** Continue PhysioNet CITI (`VinDr-Mammo`) & INESC TEC (`INbreast`) DUA requests; unused `23.41 GB` partial `DS0004_CBIS_DDSM` cropped/ROI folder stays untouched outside active modeling scope.

@@ -162,15 +162,16 @@ def test_dmid_rgba_contour_fill_n_token_contradictions_and_ban(tmp_path: Path) -
     (raw / "Reports").mkdir(parents=True)
 
     arr = np.full((100, 100), 60, dtype=np.uint8)
-    for stem, lat, vp in [("IMG001", "L", "CC"), ("IMG002", "R", "MLO"), ("IMG003", "L", "CC"), ("IMG004", "R", "CC")]:
+    for stem, lat, vp in [("IMG001", "L", "CC"), ("IMG002", "R", "MLO"), ("IMG003", "L", "CC"), ("IMG004", "R", "CC"), ("IMG005", "L", "MLO")]:
         _save_test_dicom(raw / "DICOM Images" / f"{stem}.dcm", arr, patient_id="", laterality=lat, view_pos=vp)
 
-    # Hollow red square contour for IMG001 (must be filled!)
+    # Hollow red square contour for IMG001 and IMG005 (IMG005 will be excluded by Option B report discordance)
     rgba = np.zeros((100, 100, 4), dtype=np.uint8)
     rgba[..., :3] = 60
     rgba[..., 3] = 255
     cv2.rectangle(rgba, (20, 20), (50, 50), (220, 20, 20, 255), thickness=2)
     Image.fromarray(rgba, mode="RGBA").save(raw / "Pixel-level annotation" / "IMG001.tif")
+    Image.fromarray(rgba, mode="RGBA").save(raw / "Pixel-level annotation" / "IMG005.tif")
 
     # Build Metadata.xlsx matching DMID header offset structure
     meta_rows = [[f"header row {i}", None, None, None, None, None, None, None] for i in range(5)]
@@ -180,16 +181,18 @@ def test_dmid_rgba_contour_fill_n_token_contradictions_and_ban(tmp_path: Path) -
         ["IMG002", "MLORT", "F", "NORM", np.nan, np.nan, np.nan, np.nan],
         ["IMG003", "CCLT", "D", "CIRC", "N ", 40, 40, 10],
         ["IMG004", "CCRT", "G", "ASYM", "N", 40, 40, 10],
+        ["IMG005", "MLOLT", "G", "ARCH", "M", 35, 35, 10],
     ])
     # Deliberate extra Benign row paired with N on IMG004 to verify mixed [B, N] exclusion
     meta_rows.append(["IMG004", "CCRT", "G", "CALC", "B", 50, 50, 5])
     pd.DataFrame(meta_rows).to_excel(raw / "Metadata.xlsx", header=False, index=False)
 
     (raw / "Reports" / "Img001.txt").write_text("Breast Composition: (ACR B)\nBIRADS: 3 and 5\n", encoding="utf-8")
-    # Deliberate XLS-vs-TXT contradiction on IMG002 (`NORM` yet `BIRADS: 4a`)
+    # Deliberate XLS-vs-TXT contradiction on IMG002 (`NORM` yet `BIRADS: 4a`) and IMG005 (`M` yet `BIRADS: 1`)
     (raw / "Reports" / "Img002.txt").write_text("Breast Composition: (ACR A)\nBIRADS: 4a\n", encoding="utf-8")
     (raw / "Reports" / "Img003.txt").write_text("BIRADS: 4a\n", encoding="utf-8")
     (raw / "Reports" / "Img004.txt").write_text("BIRADS: 3\n", encoding="utf-8")
+    (raw / "Reports" / "Img005.txt").write_text("BIRADS: 1\n", encoding="utf-8")
 
     man = tmp_path / "manifests"
     rep = tmp_path / "reports"
@@ -205,11 +208,21 @@ def test_dmid_rgba_contour_fill_n_token_contradictions_and_ban(tmp_path: Path) -
     assert "UpstreamViewTypo_CCLRT" in by_stem["IMG001"].AnomalyFlags
     # Solid filled square 31x31 = 961 pixels (far above outline thickness 2)
     assert by_stem["IMG001"].MaskForegroundPixels > 800
-    assert by_stem["IMG002"].LabelClass == "Normal_Control"
+    assert by_stem["IMG002"].BinaryTarget == "Excluded"
+    assert by_stem["IMG002"].LabelClass == "Excluded_ReportMetadataDiscordance"
+    assert by_stem["IMG002"].SubTrackB_ScreeningEligible is False
+    assert by_stem["IMG002"].MaskStatus == "not_applicable"
     assert "Discordant_NORM_vs_RepBIRADS_4" in by_stem["IMG002"].AnomalyFlags
     assert by_stem["IMG003"].LabelClass == "Excluded_AmbiguousClassToken_N"
     assert by_stem["IMG004"].LabelClass == "Excluded_AmbiguousClassToken_N"
     assert by_stem["IMG004"].MultiLesionConflict is True
+    assert by_stem["IMG005"].BinaryTarget == "Excluded"
+    assert by_stem["IMG005"].LabelClass == "Excluded_ReportMetadataDiscordance"
+    assert by_stem["IMG005"].SubTrackB_ScreeningEligible is False
+    assert by_stem["IMG005"].LesionTrack_BenignVsMalignant is False
+    assert by_stem["IMG005"].MaskStatus == "excluded_by_protocol"
+    assert by_stem["IMG005"].LocalizationEligible is False
+    assert "Discordant_M_vs_LowBIRADS_1" in by_stem["IMG005"].AnomalyFlags
 
 
 def test_bmcd_rgb_channel_separation_prior_recent_and_aspect_check(tmp_path: Path) -> None:
