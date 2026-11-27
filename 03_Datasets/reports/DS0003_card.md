@@ -6,12 +6,12 @@
 | `template_version` | `v1.0.0` |
 | `entity_id` | `DS0003` |
 | `owner` | Md Riyadul Hasan (`232-15-486`, Data Steward) & Alzubair Ahamed (`232-15-591`, Verifier) |
-| `date` | `2026-11-27` |
-| `status` | `QC_Audited_Pending_G04` |
+| `date` | `2026-11-28` (QC `2026-11-27`; Ratified `G04 PASS` `2026-11-28`) |
+| `status` | `Approved_G04_PASS` |
 | `source_inputs` | [DS0003_intake_receipt.md](./DS0003_intake_receipt.md); [DS0003_quality.md](./DS0003_quality.md); `03_Datasets/cache/qc/DS0003_qc_details.csv` |
 | `governing_section` | [OS §4](../../BC_XAI_RESEARCH_OPERATING_SYSTEM.md#os-04); [STEP-013](../../BC_XAI_PROJECT_EXECUTION_BLUEPRINT.md#step-013) |
 | `sensitivity` | Tier-1 Governance Card (`raw bytes & private linkage segregated in Tier-2`) |
-| `reviewer` | Alzubair Ahamed (`232-15-591`); Md Riyadul Hasan (`232-15-486`); Israt Jahan (Supervisor — pending G04 sign-off) |
+| `reviewer` | Alzubair Ahamed (`232-15-591`); Md Riyadul Hasan (`232-15-486`); Israt Jahan (Supervisor — Approved `G04 PASS` `2026-11-28`) |
 
 ---
 
