@@ -4,7 +4,7 @@
 # and Local Structural Reference Templates from entering Git history.
 # ============================================================================
 
-# 0. Local-only reference files & literature PDFs in workspace (never pushed to thesis remote)
+# 0. Local-only reference files & literature PDFs/XMLs in workspace (never pushed to thesis remote)
 OPG_RESEARCH_OPERATING_SYSTEM.md
 OPG_PROJECT_EXECUTION_BLUEPRINT.md
 Title_defence_evaluation_report.pdf
@@ -15,8 +15,11 @@ papers/
 02_Literature/full_texts/
 02_Literature/pdfs/
 02_Literature/**/*.pdf
+02_Literature/**/*.xml
 Paper/**/*.pdf
+Paper/**/*.xml
 Papers/**/*.pdf
+Papers/**/*.xml
 *.pdf
 !11_Writing/**/*.pdf
 !10_Figures_Tables/**/*.pdf
