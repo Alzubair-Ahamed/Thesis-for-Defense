@@ -1,7 +1,7 @@
 # Research Project Management Dashboard
 
 - **Document:** `01_Project_Management/dashboard.md`
-- **Last Updated:** `2026-11-27` (**`DS0001 MIAS` (`322` PGMs) & `DS0003 CMMD` (`5,202` DICOMs / `1,775` pts) Acquired & SHA-256 Inventoried**; `DMID` & `CBIS-DDSM` Next)
+- **Last Updated:** `2026-11-27` (**`DS0001 MIAS`, `DS0002 DMID`, `DS0003 CMMD`, `DS0005 BMCD` & `DS0006 CDD-CESM` Acquired & SHA-256 Inventoried**; `CBIS-DDSM` full download aborted)
 - **Approved Title:** *Explainable Deep Learning-Based Early Breast Cancer Detection Using Mammogram Images* (`RF01`)
 - **Researchers:** Alzubair Ahamed (`232-15-591`) & Md Riyadul Hasan (`232-15-486`)
 - **Supervisors:** Israt Jahan (Supervisor) & Ms Faiza Feroz (Co-Supervisor)
@@ -38,12 +38,12 @@
   1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001` Approved, `DEC0003` Approved [`Option 1 + RQ1–RQ4`, `2026-11-27`], `DEC0004` Approved [`2026-11-27`], `DEC0005` Shortlist Prepared [`STEP-010`], `DEC0006` Batch A Approved [`2026-11-27`], `DEC0014` Phase-1 Approved)
   2. `01_Project_Management/gates.csv` (`18` rows: `G01 PASS`, `G02 PASS`, `G03 PASS` [`2026-11-27`], `G04–G17` `NOT ASSESSED`)
   3. `01_Project_Management/risk_register.csv` (`10` initial project risk themes `RISK0001–RISK0010`)
-  4. `02_Literature/papers.csv` (`1,496` rows: `42/42` curated local PDFs extracted to `T05` + `6` Stage-2 OA landmarks verified/extracted + `13` `UD04` `SEED` leads audited/quarantined + `908` Stage-1 candidates `Pending_FullText_*` + `527` Stage-1/GS exclusions)
+  4. `02_Literature/papers.csv` (`1,501` rows: `42/42` curated local PDFs extracted to `T05` + `11` Stage-2 OA landmarks verified/extracted incl. `P1497–P1501` + `13` `UD04` `SEED` leads audited/quarantined + `908` Stage-1 candidates `Pending_FullText_*` + `527` Stage-1/GS exclusions)
   5. `02_Literature/screening.csv` (`2,226` rows: `62` GS FT + `34` GS dup + `13` SEED intake + `677` open-DB dup + `1,421` Stage-1 `title_abstract` + `6` Stage-2 OA `full_text` + `13` `seed_ud04_audit`)
   6. `02_Literature/gaps.csv` (`5` verified gaps `GAP0001–GAP0005` testing `RF16` & `UD04`, backed by `02_Literature/gap_notes/`)
   7. `02_Literature/claims.csv` (`10` primary-source empirical claims `CLAIM0001–CLAIM0010`, backed by `02_Literature/claim_notes/`)
-  8. `03_Datasets/candidates.csv` (`11` audited primary/derived 2D mammography collections `CAND0001–CAND0011` backing `candidate_comparison.md`)
-  9. `03_Datasets/datasets.csv` (`2` Batch A intakes verified: `DS0001 MIAS v1.21` [`322` imgs / `161` pts] & `DS0003 CMMD` [`5,202` DICOMs / `1,775` pts])
+  8. `03_Datasets/candidates.csv` (`13` audited primary/derived 2D mammography collections `CAND0001–CAND0013` backing `candidate_comparison.md`)
+  9. `03_Datasets/datasets.csv` (`5` Batch A open intakes verified: `DS0001 MIAS v1.21` [`322` PGMs], `DS0002 DMID` [`510` DICOMs/`511` TIFFs/`538` masks], `DS0003 CMMD` [`5,202` DICOMs], `DS0005 BMCD` [`400` DICOMs/`400` GT overlays], `DS0006 CDD-CESM` [`1,003` LE + `1,003` CESM JPEGs + CSV polygons])
 - **Header-Only Scientific Registries Awaiting Downstream Steps (`15`):**
   - `03_Datasets/releases.csv`
   - `04_Labels_XAI_Governance/{label_registry,xai_protocol_registry}.csv`
@@ -60,4 +60,5 @@
 ---
 
 ## 3. Immediate Next Action
-- **Batch A Intake Remaining:** (1) User browser download of **`DMID`** (`10.92 GB`, Figshare `24522883`, blocked on CloudFront WAF for CLI) into `03_Datasets/raw/DS0002_DMID/`; (2) confirm **`CBIS-DDSM` (`152.28 GB`)** storage split (**`95.58 GB` full mammograms on `D:\` [`137.40 GB` free] + `56.70 GB` ROI masks & cropped on `E:\` [`126.21 GB` free]**); and (3) complete PhysioNet CITI (`VinDr-Mammo`) & INESC TEC (`INbreast`) Batch B requests. `DS0001` (`MIAS`) & `DS0003` (`CMMD`) are **100% acquired and ready for `STEP-013` QC!**
+- **Ready for `STEP-013` (`src/bc_xai/data/qc.py` -> `G04` Gate):** Execute technical QC (decode, bit-depth, `MONOCHROME1/2` polarity, `RescaleSlope/Intercept`, header PHI audit, cross-cohort duplicate detection, and `T08` dataset cards) across **`DS0001 MIAS`, `DS0002 DMID`, `DS0003 CMMD`, `DS0005 BMCD`, and `DS0006 CDD-CESM` (`Low-Energy` isolation per `RF15`)**.
+- **Optional Batch B Queue (Parallel Non-Blocking):** Continue PhysioNet CITI (`VinDr-Mammo`) & INESC TEC (`INbreast`) DUA requests; decide final disposition of `23.41 GB` partial `DS0004_CBIS_DDSM` cropped/ROI directory.
