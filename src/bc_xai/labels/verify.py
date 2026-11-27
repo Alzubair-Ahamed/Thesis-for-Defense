@@ -521,6 +521,9 @@ def _load_linkage_and_qc(spec: LabelCohortSpec) -> list[dict[str, str]]:
     return primary_rows
 
 
+load_linkage_and_qc = _load_linkage_and_qc
+
+
 def _safe_int(val: str) -> int | None:
     try:
         return int(float(val)) if val else None
