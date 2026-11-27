@@ -3,8 +3,8 @@
 # Verified on Python 3.14.6 (MSC v.1944 64-bit AMD64) / Windows-11-10.0.26300-SP0
 # Note: Deep learning / GPU / XAI framework pins are deferred to Phase-2
 # (`environment/model/`) at STEP-023 after UD13 architecture roster selection.
-# Additional format-specific readers (e.g., pydicom for raw DICOM intake) must
-# be pinned and smoke-tested here prior to STEP-012 dataset acquisition.
+# Format-specific readers (pydicom, pylibjpeg, openpyxl) pinned and smoke-tested
+# on Python 3.14.10 prior to STEP-013 dataset QC and G04 gate assessment.
 # ============================================================================
 
 numpy==2.5.1
@@ -19,3 +19,9 @@ jsonschema==4.26.0
 pytest==9.1.1
 tabulate==0.10.0
 psutil==7.2.2
+pydicom==3.0.2
+pylibjpeg==2.1.0
+pylibjpeg-libjpeg==2.5.0
+pylibjpeg-openjpeg==2.6.0
+python-gdcm==3.2.6
+openpyxl==3.1.5

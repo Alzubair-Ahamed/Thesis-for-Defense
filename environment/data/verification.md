@@ -68,3 +68,22 @@ tests/test_step002_smoke.py::test_gitignore_blocks_restricted_medical_and_refere
 3. **Mammogram 16-Bit Polarity & ROI Co-Transform (`test_synthetic_16bit_mammogram_polarity_and_roi_cotransform`):** Verified `MONOCHROME1` → `MONOCHROME2` 12/16-bit inversion and 1:1 lesion ROI-mask spatial preservation during resizing.
 4. **Connected-Component Patient Grouping (`test_connected_component_patient_view_duplicate_grouping`):** Verified `networkx` equivalence graph keeps multi-view (LCC/RCC/LMLO/RMLO), longitudinal studies, and perceptual near-duplicates grouped atomically.
 5. **Storage-Tier Firewall (`test_gitignore_blocks_restricted_medical_and_reference_paths`):** Confirmed via `git check-ignore` that raw DICOMs (`03_Datasets/raw/`), private linkage CSVs, processed images (`05_Preprocessing/processed/`), checkpoints (`08_Checkpoints/*.pth|*.onnx`), `.env` secrets, and workspace reference files (`Title_defence_evaluation_report.pdf`, `OPG_*`) are strictly blocked from Git tracking.
+
+---
+
+## Phase-1B Extension — DICOM Codecs & Local Workstation Verification (`2026-11-27`)
+
+- **Verification Timestamp:** `2026-11-27T22:51+06:00`
+- **Verified Workstation Environment:** `Python 3.14.10 (tags/v3.14.10:b703b2c, Oct 25 2026, 17:36:52) [MSC v.1944 64 bit (AMD64)]` (Windows 11, virtual environment `.venv/`)
+- **Updated Lockfile ([requirements.txt](./requirements.txt)) SHA-256:** `2db0a7097d6495d4405d0e16822d0629a6338002e68bf4c1b151b0b0f528f338`
+- **Format-Specific Readers Pinned Prior to `STEP-013`:**
+  - `pydicom==3.0.2`
+  - `pylibjpeg==2.1.0`
+  - `pylibjpeg-libjpeg==2.5.0` *(verified decoding `DS0002_DMID` `JPEG Lossless, Non-Hierarchical, First-Order Prediction (Process 14 [Selection Value 1])`)*
+  - `pylibjpeg-openjpeg==2.6.0`
+  - `python-gdcm==3.2.6` *(C++ GDCM DICOM pixel codec — accelerated `DS0002_DMID` JPEG Lossless decode by ~5.5x alongside multiprocessing)*
+  - `openpyxl==3.1.5` *(xlsx cohort metadata inspection)*
+- **Verification Outputs Observed:**
+  - `.venv/Scripts/python.exe -m pytest tests/ -v`: **`16 passed in 5.90s`** (`0` errors, `0` skipped)
+  - `.venv/Scripts/python.exe 13_Automation/validate_registries.py`: **`VALIDATION PASSED`** (`24/24` canonical CSV registries, `35/35` templates, foreign keys clean)
+  - Live sample pixel decode verified across `DS0002_DMID` (`IMG001.dcm`, JPEG Lossless Process 14 SV1, `(6000, 4751, 3)` `uint8`), `DS0003_CMMD` (`00000001.dcm`, Explicit VR Little Endian, `(2294, 1914)` `uint8`), and `DS0005_BMCD` (`CC_prior.dcm`, Explicit VR Little Endian, `(4096, 3328)` `uint16`).
