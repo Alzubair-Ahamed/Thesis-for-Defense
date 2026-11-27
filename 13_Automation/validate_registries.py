@@ -194,6 +194,7 @@ POPULATED_SCIENTIFIC_REGISTRIES: set[str] = {
     "02_Literature/gaps.csv",
     "02_Literature/claims.csv",
     "03_Datasets/candidates.csv",
+    "03_Datasets/datasets.csv",
 }
 
 
