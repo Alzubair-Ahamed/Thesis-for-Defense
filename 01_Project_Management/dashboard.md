@@ -21,7 +21,7 @@
 | **S06** | `STEP-013` | Mammogram decoding, 16-bit/polarity/PHI QC & dataset suitability approval | `G04` | **COMPLETED (`G04 PASS`, `2026-11-28` — `7,420` Retained / `17` Clones Quarantined / `0` Integrity Errors)** |
 | **S07** | `STEP-014–015` | FFDM/ROI paradigm (`UD07`), label/ROI-mask rules (`UD08–09`) & prospective XAI (`XAIP0001`) | `G05` | **COMPLETED (`G05 PASS`, `2026-11-28` — `DEC0007–0009`, `DEC0016–0018`, `T09 v1.0.0` & `XAIP0001` Ratified)** |
 | **S08** | `STEP-016–018` | Pilot & full-dataset label/ROI-mask verification and `LBL####` freeze | `G06` | **COMPLETED (`G06 PASS`, `2026-11-28` — `LBL0001–LBL0005` Frozen `v1.0.0`, `7,437` Audited, `1,121` Verified Masks)** |
-| **S09** | `STEP-019–021` | Preprocessing design, connected-component patient split & `REL####` release | `G07`, `G08` | **IN PROGRESS (`STEP-019` Mammography Preprocessing Design & ROI Co-Transform Pipeline)** |
+| **S09** | `STEP-019–021` | Preprocessing design, connected-component patient split & `REL####` release | `G07`, `G08` | **IN PROGRESS (`STEP-019` & `DEC0012` Approved `2026-11-28`; Executing `STEP-020` Connected-Component Split `SPLIT0001` -> `G07`)** |
 | **S10** | `STEP-022–026` | Transfer learning CNN roster (`UD13`), Phase-2 `environment/model/`, `src/bc_xai/` & smoke/recovery | `G09` | `NOT STARTED` (`G09 NOT ASSESSED`) |
 | **S11** | `STEP-027–031` | Multi-architecture CNN training, controlled ablations & multi-seed runs | `G10` (per EXP) | `NOT STARTED` (`G10 NOT ASSESSED`) |
 | **S12** | `STEP-032–033` | Validation-only selection/threshold/calibration, `G11` freeze & locked test inference | `G11` | `NOT STARTED` (`G11 NOT ASSESSED`) |
@@ -35,7 +35,7 @@
 ## 2. Canonical Registry Inventory (24 Master CSVs)
 
 - **Populated Registries (`11`):**
-  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001`, `DEC0003–0005`, **`DEC0007–0009`**, **`DEC0016–0018`** Approved; `DEC0006` Batch A Approved; `DEC0014` Phase-1 Approved)
+  1. `01_Project_Management/decisions.csv` (`28` rows: `DEC0001`, `DEC0003–0005`, **`DEC0007–0009`**, **`DEC0012`**, **`DEC0016–0018`** Approved; `DEC0006` Batch A Approved; `DEC0014` Phase-1 Approved)
   2. `01_Project_Management/gates.csv` (`18` rows: **`G01–G06 PASS`**, `G07–G17` `NOT ASSESSED`)
   3. `01_Project_Management/risk_register.csv` (`10` risk themes `RISK0001–RISK0010`; `RISK0002–RISK0004` updated with live `STEP-013` clone & shortcut evidence)
   4. `02_Literature/papers.csv` (`1,501` rows: `42/42` curated local PDFs extracted to `T05` + `11` Stage-2 OA landmarks verified/extracted incl. `P1497–P1501` + `13` `UD04` `SEED` leads audited/quarantined + `908` Stage-1 candidates `Pending_FullText_*` + `527` Stage-1/GS exclusions)
@@ -61,5 +61,5 @@
 ---
 
 ## 3. Immediate Next Action
-- **Active Execution (`S09 / STEP-019`):** `GATE0006 = PASS` ratified `2026-11-28` (`LBL0001–LBL0005` frozen in [label_registry.csv](../04_Labels_XAI_Governance/label_registry.csv), [LBL0001_0005_audit.md](../04_Labels_XAI_Governance/reviews/LBL0001_0005_audit.md), [G06_assessment_2026-11-28.md](./reviews/G06_assessment_2026-11-28.md)); designing mammography preprocessing spec & ROI co-transform pipeline (`STEP-019` -> `UD12`) before connected-component splitting (`STEP-020`, `G07`).
+- **Active Execution (`S09 / STEP-020`):** `STEP-019` & [DEC0012.md](./decision_log/DEC0012.md) (`UD12`: `PP0001` `512x512` baseline vs `PP0002` `CLAHE` ablation) approved `2026-11-28`; building `src/bc_xai/data/split.py` connected-component patient/view/clone graph & locked `SPLIT0001` (`DEC0010–0011` / `G07`).
 - **Optional Batch B Queue (Parallel Non-Blocking):** Continue PhysioNet CITI (`VinDr-Mammo`) & INESC TEC (`INbreast`) DUA requests; unused `23.41 GB` partial `DS0004_CBIS_DDSM` cropped/ROI folder stays untouched outside active modeling scope.

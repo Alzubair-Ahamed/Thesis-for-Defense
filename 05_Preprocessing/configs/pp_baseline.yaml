@@ -1,0 +1,62 @@
+# ============================================================================
+# Preprocessing Configuration: PP0001 (Clean Baseline Mammography Pipeline)
+# Spec: 05_Preprocessing/specs/pipeline.md |UD12 (DEC0012)
+# Pre-G07 Rule: Spec & config only; zero val/test stats fitting or disk cache before G07 PASS.
+# ============================================================================
+
+preprocessing_id: PP0001
+name: mammography_clean_baseline_512
+role: baseline
+protocol_version: v1.0.0
+input_label_protocol: T09_v1.0.1 + ADJ-017-02_Option_B
+
+intensity:
+  monochrome1_invert: true
+  apply_dicom_rescale: true
+  bit_depth_mode: header_bits_stored   # supports 8-bit uint8 (255), 12-bit BMCD (4095), 16-bit CMMD (65535)
+  rgb_identical_channel_collapse: true
+  target_range: [0.0, 1.0]
+
+foreground_crop:
+  enabled: true
+  air_threshold: 0.02
+  min_component_area_frac: 0.005
+  safety_margin_px: 16
+  safety_margin_frac: 0.02
+  skip_if_area_coverage_ge: 0.92       # avoids redundant crop on tightly-cropped CDD-CESM LE scans
+  enforce_zero_roi_clipping: true
+
+artifact_policy:
+  suppress_corner_markers_in_pixels: false   # preserves native scans for RISK0004 XAI shortcut audit
+  strip_green_bmcd_ruler_in_gt_only: true
+
+clahe:
+  enabled: false                             # isolated strictly in PP0002 (pp_clahe_ablation.yaml)
+  clip_limit: 2.0
+  tile_grid_size: [8, 8]
+
+geometry:
+  target_size: 512
+  preserve_aspect_ratio: true
+  pad_value: 0.0
+  image_downsample_interp: INTER_AREA
+  image_upsample_interp: INTER_LINEAR
+  mask_interp: INTER_NEAREST                 # exact binary {0, 1} post-hoc ROI co-transform
+
+normalization:
+  policy: imagenet_rgb                       # zero val/test dataset fitting risk
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  fit_partition_required: train              # enforced if policy switched to train_zscore post-G07
+
+training_only_augmentations:
+  apply_during_rel_materialization: false    # strict invariant: zero stochastic augmentation saved to REL####
+  horizontal_flip_prob: 0.5
+  vertical_flip_prob: 0.0                    # anatomically prohibited
+  rotation_deg_range: [-10.0, 10.0]
+  translate_frac_range: [-0.05, 0.05]
+  scale_range: [0.95, 1.05]
+  brightness_contrast_scale: [0.92, 1.08]
+  gamma_range: [0.90, 1.10]
+  random_erasing_or_cutout: false
+  mixup_or_cutmix: false
