@@ -12,7 +12,9 @@ import argparse
 import concurrent.futures
 import http.client
 import json
+import os
 import re
+import stat
 import sys
 import urllib.error
 import urllib.parse
@@ -121,19 +123,71 @@ def series_extract_dir(out_dir: Path, rec: SeriesRecord) -> Path:
     return out_dir / "dicoms" / desc_dir / pat_dir / uid
 
 
+def _unlink_writable(path: Path) -> None:
+    """Clear read-only bit if present (Windows Tier-2 archives) and remove file."""
+    if path.exists():
+        os.chmod(path, stat.S_IWRITE | stat.S_IREAD)
+        path.unlink(missing_ok=True)
+
+
+def prune_verified_archives(out_dir: Path) -> tuple[int, int]:
+    """Delete series ZIPs under archives/ that already have valid .extracted_ok DICOM trees."""
+    archives_dir = out_dir / "archives"
+    dicoms_dir = out_dir / "dicoms"
+    if not archives_dir.is_dir():
+        return (0, 0)
+
+    removed = 0
+    freed_bytes = 0
+    for zpath in sorted(archives_dir.rglob("*.zip")):
+        rel = zpath.relative_to(archives_dir)
+        edir = dicoms_dir / rel.parent / zpath.stem
+        done_marker = edir / ".extracted_ok"
+        if not done_marker.is_file():
+            continue
+        has_payload = any(
+            p.is_file() and p.name != ".extracted_ok" and p.stat().st_size > 0
+            for p in edir.iterdir()
+        )
+        if not has_payload:
+            continue
+        size = zpath.stat().st_size
+        _unlink_writable(zpath)
+        removed += 1
+        freed_bytes += size
+
+    for d in sorted(archives_dir.rglob("*"), reverse=True):
+        if d.is_dir():
+            try:
+                d.rmdir()
+            except OSError:
+                pass
+    try:
+        archives_dir.rmdir()
+    except OSError:
+        pass
+    return (removed, freed_bytes)
+
+
 def download_one_series(
     rec: SeriesRecord,
     out_dir: Path,
     extract: bool = True,
     timeout: int = 120,
     retries: int = 3,
+    cleanup_zip: bool = False,
 ) -> tuple[str, str]:
     """Download and verify a single TCIA series ZIP (idempotent resume)."""
+    if cleanup_zip and not extract:
+        raise ValueError("cleanup_zip=True requires extract=True")
+
     zpath = series_zip_path(out_dir, rec)
     edir = series_extract_dir(out_dir, rec)
     done_marker = edir / ".extracted_ok"
 
     if extract and done_marker.is_file():
+        if cleanup_zip and zpath.exists():
+            _unlink_writable(zpath)
         return ("skipped", rec.series_uid)
     if not extract and verify_zip_archive(zpath):
         return ("skipped", rec.series_uid)
@@ -166,6 +220,7 @@ def download_one_series(
 
     if extract and not done_marker.is_file():
         edir.mkdir(parents=True, exist_ok=True)
+        extracted_files = 0
         with zipfile.ZipFile(zpath, "r") as zf:
             for member in zf.infolist():
                 member_name = Path(member.filename).name
@@ -174,7 +229,13 @@ def download_one_series(
                 target = edir / member_name
                 with zf.open(member, "r") as src, target.open("wb") as dst:
                     dst.write(src.read())
+                extracted_files += 1
+        if extracted_files == 0:
+            raise RuntimeError(f"No DICOM/payload files extracted from {zpath}")
         done_marker.write_text("ok\n", encoding="utf-8")
+
+    if extract and cleanup_zip and done_marker.is_file() and zpath.exists():
+        _unlink_writable(zpath)
 
     return ("downloaded", rec.series_uid)
 
@@ -186,8 +247,11 @@ def run_collection_download(
     workers: int = 6,
     limit: int | None = None,
     extract: bool = True,
+    cleanup_zip: bool = False,
 ) -> dict[str, int]:
     """Download filtered TCIA collection series concurrently with progress reporting."""
+    if cleanup_zip and not extract:
+        raise ValueError("cleanup_zip=True requires extract=True")
     out_dir.mkdir(parents=True, exist_ok=True)
     cache_path = out_dir / f"_{sanitize_segment(collection)}_series_manifest.json"
     all_records = fetch_collection_series(collection, cache_path)
@@ -195,13 +259,13 @@ def run_collection_download(
     total_bytes = sum(r.file_size_bytes for r in targets)
     print(
         f"TCIA Fetch {collection}: {len(targets)} target series "
-        f"({total_bytes / (1024 ** 3):.2f} GiB uncompressed), workers={workers}"
+        f"({total_bytes / (1024 ** 3):.2f} GiB uncompressed), workers={workers}, cleanup_zip={cleanup_zip}"
     )
 
     counts = {"downloaded": 0, "skipped": 0, "failed": 0}
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
         futures = {
-            pool.submit(download_one_series, rec, out_dir, extract): rec
+            pool.submit(download_one_series, rec, out_dir, extract, 120, 3, cleanup_zip): rec
             for rec in targets
         }
         for idx, fut in enumerate(concurrent.futures.as_completed(futures), start=1):
@@ -223,18 +287,37 @@ def run_collection_download(
 def parse_args(argv: Iterable[str] | None = None) -> argparse.Namespace:
     """Parse CLI arguments for TCIA collection downloader."""
     parser = argparse.ArgumentParser(description="Resumable TCIA NBIA collection downloader")
-    parser.add_argument("--collection", required=True, help="TCIA Collection name (e.g., CMMD, CBIS-DDSM)")
+    parser.add_argument("--collection", default="", help="TCIA Collection name (e.g., CMMD, CBIS-DDSM)")
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--descriptions", type=str, default="", help="Comma-separated SeriesDescription filter")
     parser.add_argument("--workers", type=int, default=6)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--no-extract", action="store_true")
-    return parser.parse_args(list(argv) if argv is not None else None)
+    parser.add_argument(
+        "--cleanup-zip",
+        action="store_true",
+        help="Delete each series ZIP archive immediately after verified extraction",
+    )
+    parser.add_argument(
+        "--prune-only",
+        action="store_true",
+        help="Remove already-extracted ZIPs matching verified .extracted_ok DICOM trees under --out-dir",
+    )
+    args = parser.parse_args(list(argv) if argv is not None else None)
+    if not args.prune_only and not args.collection.strip():
+        parser.error("--collection is required unless --prune-only is set")
+    if args.cleanup_zip and args.no_extract:
+        parser.error("--cleanup-zip cannot be combined with --no-extract")
+    return args
 
 
 def main(argv: Iterable[str] | None = None) -> int:
     """CLI entrypoint returning nonzero if any series fails download/verification."""
     args = parse_args(argv)
+    if args.prune_only:
+        removed, freed = prune_verified_archives(args.out_dir)
+        print(f"PRUNED {removed} verified ZIP archive(s), freed {freed / (1024 ** 3):.2f} GiB ({freed} bytes)")
+        return 0
     descs = [d.strip() for d in args.descriptions.split(",") if d.strip()] if args.descriptions else None
     counts = run_collection_download(
         collection=args.collection,
@@ -243,6 +326,7 @@ def main(argv: Iterable[str] | None = None) -> int:
         workers=args.workers,
         limit=args.limit,
         extract=not args.no_extract,
+        cleanup_zip=args.cleanup_zip,
     )
     return 1 if counts["failed"] > 0 else 0
 

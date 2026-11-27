@@ -12,8 +12,11 @@ if str(ROOT / "src") not in sys.path:
     sys.path.insert(0, str(ROOT / "src"))
 
 from bc_xai.data.tcia_fetch import (  # noqa: E402
+    download_one_series,
     filter_series,
+    parse_args,
     parse_series_records,
+    prune_verified_archives,
     series_extract_dir,
     series_zip_path,
     verify_zip_archive,
@@ -99,3 +102,80 @@ def test_series_paths_preserve_patient_and_series_uids(tmp_path: Path) -> None:
     )[0]
     assert series_zip_path(tmp_path, rec) == tmp_path / "archives" / "Mammo_View" / "D1-0001" / "1.2.99.zip"
     assert series_extract_dir(tmp_path, rec) == tmp_path / "dicoms" / "Mammo_View" / "D1-0001" / "1.2.99"
+
+
+def test_cleanup_zip_and_prune_require_verified_extraction(tmp_path: Path) -> None:
+    """Verified extracted series remove redundant ZIPs and stay skipped on resume."""
+    import pytest
+
+    rec = parse_series_records(
+        json.dumps(
+            [
+                {
+                    "Collection": "CBIS-DDSM",
+                    "PatientID": "P_0003",
+                    "StudyInstanceUID": "1.2",
+                    "SeriesInstanceUID": "1.2.3.4",
+                    "SeriesDescription": "ROI mask images",
+                    "ImageCount": 1,
+                    "FileSize": 512,
+                }
+            ]
+        )
+    )[0]
+
+    zpath = series_zip_path(tmp_path, rec)
+    zpath.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(zpath, "w") as zf:
+        zf.writestr("1-1.dcm", b"DICM_PAYLOAD")
+
+    with pytest.raises(ValueError, match="cleanup_zip=True requires extract=True"):
+        download_one_series(rec, tmp_path, extract=False, cleanup_zip=True)
+
+    status1, _ = download_one_series(rec, tmp_path, extract=True, cleanup_zip=True)
+    edir = series_extract_dir(tmp_path, rec)
+    assert status1 == "downloaded"
+    assert (edir / "1-1.dcm").read_bytes() == b"DICM_PAYLOAD"
+    assert (edir / ".extracted_ok").is_file()
+    assert not zpath.exists()
+
+    # Resume must treat already-extracted series as skipped even after ZIP cleanup.
+    status2, _ = download_one_series(rec, tmp_path, extract=True, cleanup_zip=True)
+    assert status2 == "skipped"
+
+    # Re-create verified (marked read-only) vs unverified ZIPs to test prune_verified_archives safety.
+    import os
+    import stat
+
+    with zipfile.ZipFile(zpath, "w") as zf:
+        zf.writestr("1-1.dcm", b"DICM_PAYLOAD")
+    os.chmod(zpath, stat.S_IREAD)
+
+    unverified_rec = parse_series_records(
+        json.dumps(
+            [
+                {
+                    "Collection": "CBIS-DDSM",
+                    "PatientID": "P_0004",
+                    "StudyInstanceUID": "1.3",
+                    "SeriesInstanceUID": "1.3.4.5",
+                    "SeriesDescription": "ROI mask images",
+                    "ImageCount": 1,
+                    "FileSize": 512,
+                }
+            ]
+        )
+    )[0]
+    uzpath = series_zip_path(tmp_path, unverified_rec)
+    uzpath.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(uzpath, "w") as zf:
+        zf.writestr("1-1.dcm", b"KEEP_ME")
+
+    removed, freed = prune_verified_archives(tmp_path)
+    assert removed == 1
+    assert freed > 0
+    assert not zpath.exists()
+    assert uzpath.exists()
+
+    args = parse_args(["--out-dir", str(tmp_path), "--prune-only"])
+    assert args.prune_only is True
