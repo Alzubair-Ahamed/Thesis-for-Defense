@@ -294,7 +294,7 @@ def resize_and_pad_pair(
     preserve_aspect_ratio: bool = True,
     pad_value: float = 0.0,
 ) -> tuple[np.ndarray, np.ndarray | None, SpatialTransformMeta]:
-    """Co-transform image (`AREA/LINEAR`) and optional binary ROI mask (`NEAREST`) 1:1."""
+    """Co-transform image (`AREA/LINEAR`) and optional binary ROI mask (`AREA>0 downsample / NEAREST upsample`) 1:1."""
     orig_h, orig_w = int(img_f32.shape[0]), int(img_f32.shape[1])
     x0, y0, x1, y1 = crop_box if crop_box is not None else (0, 0, orig_w, orig_h)
     cropped = img_f32[y0:y1, x0:x1]
@@ -340,7 +340,12 @@ def resize_and_pad_pair(
             raise ValueError(
                 f"ROI mask pixels clipped by crop {(x0, y0, x1, y1)}: orig={orig_pos}, after_crop={cropped_pos}"
             )
-        m_res = cv2.resize(m_crop, (new_w, new_h), interpolation=cv2.INTER_NEAREST)
+        if new_h < ch or new_w < cw:
+            # Area-fraction downsample (> 0) preserves small micro-calcifications and point markers under >=8:1 shrink.
+            m_area = cv2.resize(m_crop.astype(np.float32), (new_w, new_h), interpolation=cv2.INTER_AREA)
+            m_res = (m_area > 0.0).astype(np.uint8)
+        else:
+            m_res = cv2.resize(m_crop, (new_w, new_h), interpolation=cv2.INTER_NEAREST)
         m_pad = cv2.copyMakeBorder(
             m_res,
             pad_top,
