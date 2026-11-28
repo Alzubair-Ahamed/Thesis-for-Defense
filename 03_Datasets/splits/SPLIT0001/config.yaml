@@ -1,0 +1,13 @@
+split_id: SPLIT0001
+seed: 20261128
+primary_internal_dataset: DS0003
+train_ratio: 0.7
+val_ratio: 0.15
+test_ratio: 0.15
+dev_folds: 5
+input_label_manifest_sha256:
+  LBL0001: 0af4cccefd98a347ebbf4da211659a69efde2c25015a9e4eb3bcc7e8c1d681c2
+  LBL0002: 4d6e7fde17bcb94dc758996f525422c3a3ad5623833317f8c1dac273f14f4665
+  LBL0003: 3f4680d69013e133df59a010e44aa8ab1571f0e2a9a5857dc720fd57d2ae6c2e
+  LBL0004: b0b2937c33ebda9aec144d46813404a3de9fab0ea89211ea6b197a7f593f75c9
+  LBL0005: 0c5d380c0f49700ac88a9a6fd9a08215036216dfd0b82bf5ae34fa73db924f4e
